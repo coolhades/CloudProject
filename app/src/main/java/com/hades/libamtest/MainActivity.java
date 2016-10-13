@@ -1,4 +1,4 @@
-package com.hades.libam;
+package com.hades.libamtest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

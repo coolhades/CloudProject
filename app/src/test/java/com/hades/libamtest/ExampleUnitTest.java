@@ -1,4 +1,4 @@
-package com.hades.libam;
+package com.hades.libamtest;
 
 import org.junit.Test;
 

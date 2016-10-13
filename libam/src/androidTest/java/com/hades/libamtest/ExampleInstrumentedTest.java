@@ -1,4 +1,4 @@
-package com.hades.libam;
+package com.hades.libamtest;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.hades.libam", appContext.getPackageName());
+        assertEquals("com.hades.libam.test", appContext.getPackageName());
     }
 }

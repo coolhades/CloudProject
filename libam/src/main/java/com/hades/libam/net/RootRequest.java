@@ -4,8 +4,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.hades.quicklibrary.pojo.BaseRetData;
-import com.hades.quicklibrary.logtag.DebugTAG;
+import com.hades.libam.logtag.DebugTAG;
+import com.hades.libam.pojo.BaseRetData;
 
 import java.io.File;
 import java.io.FileOutputStream;
