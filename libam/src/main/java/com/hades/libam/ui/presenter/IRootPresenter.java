@@ -1,6 +1,7 @@
 package com.hades.libam.ui.presenter;
 
-import com.hades.quicklibrary.ui.interf.IRootView;
+
+import com.hades.libam.ui.interf.IRootView;
 
 /**
  * Created by Hades on 16/10/8.

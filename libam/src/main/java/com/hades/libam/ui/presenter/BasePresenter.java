@@ -2,9 +2,10 @@ package com.hades.libam.ui.presenter;
 
 import android.util.Log;
 
-import com.hades.quicklibrary.logtag.DebugTAG;
-import com.hades.quicklibrary.ui.interf.IRootModel;
-import com.hades.quicklibrary.ui.interf.IRootView;
+import com.hades.libam.logtag.DebugTAG;
+import com.hades.libam.ui.interf.IRootModel;
+import com.hades.libam.ui.interf.IRootView;
+
 
 /**
  * Created by Hades on 16/10/8.

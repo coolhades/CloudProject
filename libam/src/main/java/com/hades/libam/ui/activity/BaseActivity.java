@@ -3,14 +3,15 @@ package com.hades.libam.ui.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.hades.quicklibrary.ui.interf.IRootView;
-import com.hades.quicklibrary.ui.presenter.IRootPresenter;
+import com.hades.libam.ui.interf.IRootView;
+import com.hades.libam.ui.presenter.IRootPresenter;
+
 
 /**
  * Created by Hades on 16/10/8.
  */
 
-public abstract class BaseActivity<P extends IRootPresenter> extends AppCompatActivity implements IRootView{
+public abstract class BaseActivity<P extends IRootPresenter> extends AppCompatActivity implements IRootView {
 
     protected P mPresenter;
 
