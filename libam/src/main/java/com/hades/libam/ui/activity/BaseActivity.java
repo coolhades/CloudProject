@@ -20,7 +20,7 @@ public abstract class BaseActivity<P extends IRootPresenter> extends AppCompatAc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        initView();
+        initView(savedInstanceState);
         mPresenter = onLoadPresenter();
         getPresenter().attachView(this);
         initData();
@@ -43,7 +43,7 @@ public abstract class BaseActivity<P extends IRootPresenter> extends AppCompatAc
     }
 
     protected abstract P onLoadPresenter();
-    protected abstract void initView();
+    protected abstract void initView(Bundle savedInstanceState);
     protected abstract void initData();
     protected abstract void initEvent();
 }
