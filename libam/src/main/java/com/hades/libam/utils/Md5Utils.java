@@ -9,11 +9,27 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Md5Utils {
 
+    //默认方法
     public static String md5(String string) {
+
+        return enCodeMd5(string).substring(6,22);
+    }
+
+    /**
+    * 创建时间 16/10/14
+    * auther Hades
+    * 描述   range 取字符串位置
+    **/
+    public static String md5(String string, int start, int end) {
+
+        return enCodeMd5(string).substring(start,end);
+    }
+
+    public static String enCodeMd5(String ss){
         byte[] hash;
         String str;
         try {
-            hash = MessageDigest.getInstance("MD5").digest(string.getBytes("UTF-8"));
+            hash = MessageDigest.getInstance("MD5").digest(ss.getBytes("UTF-8"));
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Huh, MD5 should be supported?", e);
         } catch (UnsupportedEncodingException e) {
@@ -27,10 +43,7 @@ public class Md5Utils {
         }
 
         str=hex.toString();
-        
-        System.out.print("MD5  "+str.substring(7,23));
-        
-        return str.substring(6,22);
+        return str;
     }
     
 }

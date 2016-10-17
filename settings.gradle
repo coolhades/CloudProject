@@ -1,1 +1,1 @@
-include ':app', ':libam'
+include ':app', ':libam',':AndroidUtilCode-master'

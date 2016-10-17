@@ -24,6 +24,12 @@ public abstract class BasePresenter<T extends IRootView, M extends IRootModel> i
         mView = view;
 
     }
+//
+    public void setOnMViewListener(T view){
+        if (view != null) {
+            mView = view;
+        }
+    }
 
     @Override
     public void detachView() {
@@ -41,5 +47,9 @@ public abstract class BasePresenter<T extends IRootView, M extends IRootModel> i
 
     public M getModel() {
         return mModel;
+    }
+
+    public void setmModel(M model){
+        mModel = model;
     }
 }

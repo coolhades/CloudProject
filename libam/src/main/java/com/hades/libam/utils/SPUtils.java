@@ -12,7 +12,7 @@ import android.content.SharedPreferences.Editor;
  *         SharedPrefereces工具类
  *
  */
-public class SharedPreferencesUtils {
+public class SPUtils {
 
     /**
      * 向SharedPreferences中写入int类型数据
