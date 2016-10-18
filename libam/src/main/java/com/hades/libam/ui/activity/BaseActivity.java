@@ -1,6 +1,7 @@
 package com.hades.libam.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.hades.libam.ui.interf.IRootView;
@@ -15,11 +16,13 @@ public abstract class BaseActivity<P extends IRootPresenter> extends AppCompatAc
 
     protected P mPresenter;
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    }
+
+    public void init(Bundle savedInstanceState){
         initView(savedInstanceState);
         mPresenter = onLoadPresenter();
         getPresenter().attachView(this);

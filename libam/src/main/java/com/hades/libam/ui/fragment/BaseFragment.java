@@ -2,11 +2,8 @@ package com.hades.libam.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.hades.libam.ui.interf.IRootView;
 import com.hades.libam.ui.presenter.IRootPresenter;
@@ -25,12 +22,18 @@ public abstract class BaseFragment<P extends IRootPresenter> extends Fragment im
         this.mActivity = activity;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(mActivity)
-                .inflate(getLayoutId(), container, false);
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        View view = LayoutInflater.from(mActivity)
+//                .inflate(getLayoutId(), container, false);
+//
+//
+//
+//        return view;
+//    }
 
+    public void init(View view, Bundle savedInstanceState){
         mPresenter = onLoadPresenter();
         initView(view, savedInstanceState);
         getPresenter().attachView(this);
@@ -38,7 +41,6 @@ public abstract class BaseFragment<P extends IRootPresenter> extends Fragment im
         initEvent();
         getPresenter().start();
 
-        return view;
     }
 
     //加载实现类的 布局资源

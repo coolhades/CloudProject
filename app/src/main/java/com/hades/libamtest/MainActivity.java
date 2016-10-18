@@ -6,6 +6,9 @@ import android.widget.TextView;
 import com.hades.libam.ui.activity.BaseActivity;
 import com.hades.libam.utils.GsonUtils;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 /**
  * 创建时间 16/10/17
@@ -24,7 +27,20 @@ import com.hades.libam.utils.GsonUtils;
  **/
 public class MainActivity extends BaseActivity<testPresenter>
         implements testView {
+
+
+    @BindView(R.id.textView)
     TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        init(savedInstanceState);
+    }
+
+//    TextView textView;
 
     @Override
     protected int getLayoutId() {
