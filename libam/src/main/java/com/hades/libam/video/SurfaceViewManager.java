@@ -5,17 +5,15 @@ import android.view.SurfaceView;
 
 /**
  * Created by Hades on 16/10/11.
- * 1、需要注入 surfaceView
- * 2、InitHolder
+ * 1、注入 surfaceView
+ * 2、设置holdercallback后initHolder
  * 3、创建PlayerManager对象
  */
 
 public class SurfaceViewManager {
-    SurfaceView surfaceView;
-    SurfaceHolder surfaceHolder;
 
-    IInitPlayer iInitPlayer;
-    private boolean isSurfaceCreated = false;
+    //    -1 未初始化 0已销毁 1：surfaceCreated可以绑定player
+    public static int HOLDERSTATUS = -1;
 
 
     private SurfaceViewManager() {
@@ -30,12 +28,18 @@ public class SurfaceViewManager {
     }
 
 
+    SurfaceView surfaceView; //依赖注入
+    SurfaceHolder surfaceHolder; //
+    SurfaceHolderCallBack mHolderCallBack; //
 
-    public void setOnInitPlayer(IInitPlayer onInitPlayer){
-        iInitPlayer = onInitPlayer;
+    //设置回调监听
+    public void setHolderCallBack(SurfaceHolderCallBack holderCallBack){
+        if (null != holderCallBack){
+            mHolderCallBack = holderCallBack;
+        }
     }
 
-
+    //注入view
     public void setSurfaceView(SurfaceView view){
         if (view!= null){
             surfaceView = view;
@@ -48,25 +52,40 @@ public class SurfaceViewManager {
             return surfaceHolder;
         }else return null;
     }
-
-    public void InitHolder(){
-
-
+/**
+* 创建时间 2016/10/20
+* auther Hades
+* 描述  设置callback 才能初始化
+**/
+    public void initHolder(){
         surfaceHolder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                isSurfaceCreated = true;
-                iInitPlayer.InitPlayer();
+                if (null == mHolderCallBack)
+                {
+                    return;
+                }
+                HOLDERSTATUS = 1;
+                mHolderCallBack.onSurfaceViewCreated(holder);
             }
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+                if (null == mHolderCallBack)
+                {
+                    return;
+                }
+                mHolderCallBack.onsurfaceChanged(holder, format, width, height);
             }
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
-
+                if (null == mHolderCallBack)
+                {
+                    return;
+                }
+                HOLDERSTATUS = 0;
+                mHolderCallBack.onsurfaceDestroyed(holder);
             }
         });
 

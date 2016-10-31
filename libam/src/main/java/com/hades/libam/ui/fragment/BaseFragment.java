@@ -40,7 +40,6 @@ public abstract class BaseFragment<P extends IRootPresenter> extends Fragment im
         initData();
         initEvent();
         getPresenter().start();
-
     }
 
     //加载实现类的 布局资源

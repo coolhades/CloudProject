@@ -1,13 +1,22 @@
 package com.hades.libamtest;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hades.libam.ui.activity.BaseActivity;
-import com.hades.libam.utils.GsonUtils;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionYes;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.ashokvarma.bottomnavigation.BottomNavigationBar.MODE_FIXED;
 
 
 /**
@@ -28,9 +37,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity<testPresenter>
         implements testView {
 
+    BottomNavigationBar navigationBar;
+    private int CAPTURE_PHOTO_REQUEST_CODE = 1;
 
-    @BindView(R.id.textView)
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,26 +63,112 @@ public class MainActivity extends BaseActivity<testPresenter>
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        navigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        setDefaultFragment();
     }
 
+    BlankFragment fragment;
+    BlankFragment2 fragment2;
+
+
+    private void setDefaultFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        fragment = new BlankFragment();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
 
     @Override
     protected void initData() {
         //初始化数据 调用Presenter方法
         mPresenter.initData();
+        navigationBar
+                .setMode(MODE_FIXED)
+//                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
+//                .setInActiveColor("#FDF5F5") //未选中图标及文字颜色
+//                .setBarBackgroundColor("#FFAC00")//选中图标及文字颜色
+                .setActiveColor("#FFAC00") // finxed模式下为选中图标颜色，
+                .addItem(new BottomNavigationItem(R.mipmap.logo, "Home"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher, "Books"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher, "Music"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher, "Movies & TV"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher, "Games"))
+                .initialise();
     }
+
 
     @Override
     protected void initEvent() {
         //设置监听事件
+        navigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+                chooseTab(position);
+//                AndPermission.with(MainActivity.this)
+//                        .requestCode(1)
+//                        .permission(Manifest.permission.CAMERA)
+//                        .send();
 
+
+            }
+
+            @Override
+            public void onTabUnselected(int position) {
+
+            }
+
+            @Override
+            public void onTabReselected(int position) {
+
+            }
+        });
     }
 
+    private void chooseTab(int position) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment f;
+        switch (position) {
+            case 0:
+                if (null == fragment) {
+                    fragment = new BlankFragment();
+                } else {
+
+                }
+                f = fragment;
+                ft.replace(R.id.container, f);
+                break;
+            case 1:
+                if (null == fragment2) {
+                    fragment2 = new BlankFragment2();
+                } else {
+
+                }
+                f = fragment2;
+                ft.replace(R.id.container, f);
+                break;
+
+        }
+        ft.commitAllowingStateLoss();
+
+    }
 
     //testView
     @Override
     public void loadData(Object data) {
-        textView.setText(GsonUtils.getInstance().toJson(data));
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        AndPermission.onRequestPermissionsResult(MainActivity.this, requestCode, permissions, grantResults);
+    }
+
+    @PermissionYes(1)
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 调用系统相机
+        MainActivity.this.startActivity(intent);
     }
 }

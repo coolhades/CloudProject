@@ -79,6 +79,8 @@ public class HttpClientManager {
     }
 
 
+
+
     /**
     * 创建时间 16/10/10
     * auther Hades
@@ -112,7 +114,6 @@ public class HttpClientManager {
         public void setClient(T Client){
             client  = Client;
         }
-
 
     }
 }
