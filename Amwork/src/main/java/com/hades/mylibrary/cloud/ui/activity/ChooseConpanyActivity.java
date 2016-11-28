@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hades.mylibrary.R;
+import com.hades.mylibrary.base.data.ACache;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
 import com.hades.mylibrary.base.projectutils.LoadImgUtils;
@@ -47,6 +48,16 @@ public class ChooseConpanyActivity extends Activity {
     }
 
     private void init() {
+        if (null != ACache.get(this).getAsString("user_tag")){
+            RetrofitManager.getInstance().setBaseUrl(ACache.get(this).getAsString("user_tag"));
+            //跳转平台
+            Intent i = new Intent();
+            i.setAction("MainActivity");
+            ChooseConpanyActivity.this.startActivity(i);
+            ChooseConpanyActivity.this.finish();
+
+        }
+
         recyclerView = (RecyclerView) findViewById(R.id.company_list);
         GridLayoutManager manager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(manager);
@@ -71,7 +82,7 @@ public class ChooseConpanyActivity extends Activity {
                                 i.setAction("MainActivity");
                                 ChooseConpanyActivity.this.startActivity(i);
                                 ChooseConpanyActivity.this.finish();
-
+                                ACache.get(ChooseConpanyActivity.this).put("user_tag", RetrofitManager.getInstance().getmBaseUrl());
                             }
                         })
                         .setMessage(R.string.notify_choosecompany).create();
@@ -119,8 +130,8 @@ public class ChooseConpanyActivity extends Activity {
                 LoadImgUtils.loadUserHeader(mContext, companyListBean.getCompany_logo(), image);
                 title.setText(companyListBean.getCompany_name());
                 desc.setText(companyListBean.getCompany_desc());
-                course.setText("课程："+companyListBean.getCourse_count());
-                teacher.setText("老师："+companyListBean.getTeacher_count());
+                course.setText(R.string.course + companyListBean.getCourse_count());
+                teacher.setText(R.string.teacher + companyListBean.getTeacher_count());
                 time.setText(companyListBean.getCreate_time());
 
 
@@ -130,6 +141,9 @@ public class ChooseConpanyActivity extends Activity {
                     public void onClick(View view) {
                         RetrofitManager.getInstance().setBaseUrl(companyListBean.getCompany_domain());
                         KLog.json(RetrofitManager.getInstance().getmBaseUrl());
+
+                        ACache.get(ChooseConpanyActivity.this).put("user_tag", RetrofitManager.getInstance().getmBaseUrl());
+
                         Intent i = new Intent();
                         i.setAction("MainActivity");
                         mContext.startActivity(i);

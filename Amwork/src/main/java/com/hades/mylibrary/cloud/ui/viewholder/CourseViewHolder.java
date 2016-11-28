@@ -70,7 +70,7 @@ public class CourseViewHolder extends RootViewHolder {
             protected void convert(BaseViewHolder holder, Lesson lesson, int position) {
                 TextView textView = (TextView) itemView.findViewById(R.id.text1);
                 ImageView imageView = (ImageView) itemView.findViewById(R.id.imge);
-                textView.setText(mDatas.get(position).getTitle());
+                textView.setText(lesson.getTitle());
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

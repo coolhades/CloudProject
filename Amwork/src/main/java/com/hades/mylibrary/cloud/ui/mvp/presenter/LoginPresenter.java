@@ -4,11 +4,13 @@ package com.hades.mylibrary.cloud.ui.mvp.presenter;
 import android.content.Context;
 import android.content.Intent;
 
+import com.hades.mylibrary.base.data.ACache;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
 import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
 import com.hades.mylibrary.base.ui.mvp.presenter.BasePresenter;
+import com.hades.mylibrary.base.utils.ToastUtils;
 import com.hades.mylibrary.cloud.bean.User;
 import com.hades.mylibrary.cloud.constant.ApiCollection;
 import com.hades.mylibrary.cloud.constant.ConstantSet;
@@ -39,16 +41,21 @@ public class LoginPresenter extends BasePresenter<ILoadData, LoginModel> {
         login.enqueue(new Callback<RootDataBean<User>>() {
             @Override
             public void onResponse(Call<RootDataBean<User>> call, Response<RootDataBean<User>> response) {
+                if (response.body().status == 1) {
 //                用户信息保存本地 此处需要修改
-                KLog.json(GsonUtils.getInstance().toJson(response) );
-                User user = response.body().data;
-                ConstantSet.user = user;
+                    KLog.json(GsonUtils.getInstance().toJson(response));
+                    User user = response.body().data;
+                    ConstantSet.user = user;
+                    KLog.json(GsonUtils.getInstance().toJson(ConstantSet.user));
 
-                Intent i = new Intent();
-                i.setAction("ChooseConpanyActivity");
-                mContext.startActivity(i);
-                EventBus.getDefault().post(true);//关闭登录Activity
-
+                    ACache.get(mContext).put("user", GsonUtils.getInstance().toJson(user) );
+                    Intent i = new Intent();
+                    i.setAction("ChooseConpanyActivity");
+                    mContext.startActivity(i);
+                    EventBus.getDefault().post(true);//关闭登录Activity
+                }else {
+                    ToastUtils.showShortToast(mContext, response.body().message);
+                }
             }
 
             @Override

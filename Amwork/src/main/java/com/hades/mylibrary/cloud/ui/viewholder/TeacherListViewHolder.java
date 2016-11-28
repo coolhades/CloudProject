@@ -25,6 +25,7 @@ import java.util.List;
 
 /**
  * Created by Hades on 2016/11/3.
+ * 教师列表ViewHolder
  */
 
 public class TeacherListViewHolder extends RootViewHolder {

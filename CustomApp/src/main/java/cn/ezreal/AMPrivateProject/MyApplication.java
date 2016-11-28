@@ -21,6 +21,7 @@ import cn.jpush.android.api.JPushInterface;
 
 public class MyApplication extends Application {
 
+
     private HttpProxyCacheServer proxy;
 
     public static HttpProxyCacheServer getProxy(Context context) {
@@ -45,7 +46,7 @@ public class MyApplication extends Application {
         super.onCreate();
         KLog.init(BuildConfig.LOG_DEBUG, "Hades");
 
-        HttpClientManager.getInstance().initClient();//初始化默认client
+        HttpClientManager.getInstance().initClient(getApplicationContext());//初始化默认client
         //设置Retrofit
         RetrofitManager.getInstance().bindHttpClient(HttpClientManager.getInstance().getmOkHttpClient());
 
@@ -66,11 +67,12 @@ public class MyApplication extends Application {
                 //com.hades.mylibrary.cloud 公共组件 app可以针对这些组件覆盖替换
                 //ViewHolder
                 .regist("AMBanner", "com.hades.mylibrary.cloud.ui.viewholder.BannerViewHolder")
-                .regist("course", "com.hades.mylibrary.cloud.ui.viewholder.CourseViewHolder")
-                .regist("category", "com.hades.mylibrary.cloud.ui.viewholder.CatoryViewHolder")
-                .regist("teacher", "com.hades.mylibrary.cloud.ui.viewholder.TeacherViewHolder")
+                .regist("AMRecommendCourse", "com.hades.mylibrary.cloud.ui.viewholder.CourseViewHolder")
+                .regist("AMHomeCategory", "com.hades.mylibrary.cloud.ui.viewholder.CatoryViewHolder")
+                .regist("AMRecommendTeacher", "com.hades.mylibrary.cloud.ui.viewholder.TeacherViewHolder")
                 .regist("teacherlist", "com.hades.mylibrary.cloud.ui.viewholder.TeacherListViewHolder")
-                .regist("prefecturelist", "com.hades.mylibrary.cloud.ui.viewholder.PrefectureListViewHolder")
+                .regist("AMPrefectureList", "com.hades.mylibrary.cloud.ui.viewholder.PrefectureListViewHolder")
+                .regist("AMCourseCategory", "com.hades.mylibrary.cloud.ui.viewholder.AMCourseCategory")
                 .regist("announce", "com.hades.mylibrary.cloud.ui.viewholder.AnnounceViewHolder");
 
         //fragment
@@ -81,11 +83,12 @@ public class MyApplication extends Application {
 
 
         LayoutInflaterFactory.getInstance()
-                .registLayoutId("catory", String.valueOf(R.layout.catory_viewholder))
-                .registLayoutId("course", String.valueOf(R.layout.course_viewholder))
-                .registLayoutId("teacher", String.valueOf(R.layout.teacher_viewholder))
+                .registLayoutId("AMHomeCategory", String.valueOf(R.layout.catory_viewholder))
+                .registLayoutId("AMRecommendCourse", String.valueOf(R.layout.course_viewholder))
+                .registLayoutId("AMRecommendTeacher", String.valueOf(R.layout.teacher_viewholder))
                 .registLayoutId("teacherlist", String.valueOf(R.layout.teacherlist_viewholder))
-                .registLayoutId("prefecturelist", String.valueOf(R.layout.prefecturelist_viewholder))
+                .registLayoutId("AMPrefectureList", String.valueOf(R.layout.prefecturelist_viewholder))
+                .registLayoutId("AMCourseCategory", String.valueOf(R.layout.type_listview_item))
                 .registLayoutId("AMBanner", String.valueOf(R.layout.banner_viewholder));
 
 

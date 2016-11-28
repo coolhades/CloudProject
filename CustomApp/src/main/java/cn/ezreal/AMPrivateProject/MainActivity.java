@@ -8,15 +8,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hades.corelib.AmFactory;
 import com.hades.corelib.MAPTYPE;
+import com.hades.mylibrary.base.data.ACache;
 import com.hades.mylibrary.cloud.ui.fragment.CourseFragment;
 import com.hades.mylibrary.cloud.ui.fragment.HomeFragment;
 import com.hades.mylibrary.cloud.ui.fragment.MyCenterFragment;
 import com.hades.mylibrary.cloud.videocache.DataSet;
+import com.hades.mylibrary.cloud.videocache.DownLoadInfoMap;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionYes;
 
@@ -40,8 +43,12 @@ public class MainActivity extends AppCompatActivity {
         initData();
         initEvent();
 
-        DataSet.init(this);//视频下载数据库
-
+        //视频下载数据库 扩展平台数据 以平台域名为key
+        String tag = ACache.get(this).getAsString("user_tag").replace("/", "");
+        Log.d("TAG-TAG", tag);
+        DataSet.init(this, tag);
+        //加载该平台下 用户的视频下载信息
+        DownLoadInfoMap.getInstance().initDownloaderHashMap();
 
     }
 
@@ -74,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
 //                .setInActiveColor("#FDF5F5") //未选中图标及文字颜色
 //                .setBarBackgroundColor("#FFAC00")//选中图标及文字颜色
                 .setActiveColor("#FFAC00") // finxed模式下为选中图标颜色，
-                .addItem(new BottomNavigationItem(R.mipmap.logo, R.string.home))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher, R.string.course))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher, R.string.mine))
+                .addItem(new BottomNavigationItem(R.mipmap.home_img_normal, R.string.home))
+                .addItem(new BottomNavigationItem(R.mipmap.kecheng_img_normal, R.string.course))
+                .addItem(new BottomNavigationItem(R.mipmap.myself_img_normal, R.string.mine))
                 .initialise();
     }
 
@@ -152,5 +159,12 @@ public class MainActivity extends AppCompatActivity {
     private void openCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 调用系统相机
         MainActivity.this.startActivity(intent);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DataSet.saveData();
     }
 }

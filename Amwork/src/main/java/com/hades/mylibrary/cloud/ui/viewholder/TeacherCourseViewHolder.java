@@ -24,7 +24,7 @@ import java.util.List;
  * 名师详情页 课程列表
  */
 
-public class HolderTeacherCourse extends RootViewHolder {
+public class TeacherCourseViewHolder extends RootViewHolder {
 
 
     RecyclerView recyclerview;
@@ -35,7 +35,7 @@ public class HolderTeacherCourse extends RootViewHolder {
     GridLayoutParamsBean layoutParamsBean;
     ResizeLayoutParams resizeLayoutParams = new ResizeLayoutParams();
 
-    public HolderTeacherCourse(View itemView) {
+    public TeacherCourseViewHolder(View itemView) {
         super(itemView);
 
     }

@@ -16,21 +16,22 @@ public  class RootViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         initview(itemView);
     }
+    protected void initview(View view){
 
+    }
+    public void setConfig(String config, Context context){
+
+
+    }
 
     public void setData(String data, Context context){
         //包含了 blocktype
 
     }
 
-    public void setConfig(String config, Context context){
 
 
-    }
 
-    protected void initview(View view){
-
-    }
 
 
 }

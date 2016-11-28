@@ -110,7 +110,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.hades.mylibrary.cloud.ui.mvp.activity.SearchActivity"
+        <activity android:name="com.hades.mylibrary.cloud.ui.activity.SearchActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="SearchActivity" />

@@ -1,7 +1,10 @@
 package com.hades.mylibrary.base.net;
 
+import android.content.Context;
+
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -38,10 +41,10 @@ public class HttpClientManager {
     * auther Hades
     * 描述  在Application中初始化client
     **/
-    public void initClient(){
+    public void initClient(Context context){
         //初始化
         if (mOkHttpClient == null) {
-            initDefaultClient();
+            initDefaultClient(context);
         }
     }
 
@@ -64,7 +67,7 @@ public class HttpClientManager {
     * 描述 默认实现 增加了拦截器 设置了log
      *    需要缓存设置 需要实现自定义client 并注入
     **/
-    private void initDefaultClient() {
+    private void initDefaultClient(Context context) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder()
@@ -73,11 +76,10 @@ public class HttpClientManager {
                 .writeTimeout(10, TimeUnit.SECONDS)//设置写入超时时间
                 .addInterceptor(interceptor);
         int cacheSize = 100 * 1024 * 1024; // 10 MiB
-//        Cache cache = new Cache(App.getContext().getCacheDir(), cacheSize);
-//        builder.cache(cache);
+        Cache cache = new Cache(context.getCacheDir(), cacheSize);
+        builder.cache(cache);
         mOkHttpClient = builder.build();
     }
-
 
 
 

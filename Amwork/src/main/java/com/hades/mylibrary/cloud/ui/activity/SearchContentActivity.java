@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,17 +13,19 @@ import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.net.RetrofitManager;
+import com.hades.mylibrary.base.projectutils.GsonUtils;
+import com.hades.mylibrary.base.projectutils.LoadImgUtils;
+import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.NormalBaseActivity;
 import com.hades.mylibrary.base.ui.base.adapter.CommonAdapter;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
 import com.hades.mylibrary.base.ui.base.viewholder.BaseViewHolder;
-import com.hades.mylibrary.cloud.adapter.HomeAdapter;
+import com.hades.mylibrary.base.utils.ToastUtils;
 import com.hades.mylibrary.cloud.bean.SearchLesson;
 import com.hades.mylibrary.cloud.bean.SearchLessonCenter;
 import com.hades.mylibrary.cloud.bean.TypeBean;
 import com.hades.mylibrary.cloud.constant.ApiCollection;
 import com.hades.mylibrary.cloud.constant.ConstantSet;
-import com.hades.mylibrary.cloud.ui.mvp.activity.SearchActivity;
 import com.hades.mylibrary.cloud.ui.views.TypeDialog;
 
 import java.util.List;
@@ -33,9 +36,9 @@ import retrofit2.Response;
 
 import static com.hades.mylibrary.R.id.recyclerview;
 
+
 public class SearchContentActivity extends NormalBaseActivity {
 
-    LRecyclerView listView;
     List<SearchLesson> lists;
     List<TypeBean> dialogList;
 
@@ -59,6 +62,7 @@ public class SearchContentActivity extends NormalBaseActivity {
     TypeDialog typeDialog;
     private CommonAdapter adapter;
     private LRecyclerViewAdapter mLRecyclerViewAdapter;
+    LRecyclerView lRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,7 @@ public class SearchContentActivity extends NormalBaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        listView = (LRecyclerView) findViewById(recyclerview);
+        lRecyclerView = (LRecyclerView) findViewById(recyclerview);
 
         titleText = (TextView) findViewById(R.id.title_text);
         titleImg = (ImageView) findViewById(R.id.title_img);
@@ -85,6 +89,7 @@ public class SearchContentActivity extends NormalBaseActivity {
         jiageImg= (ImageView) findViewById(R.id.jiage_img);
 
         mSearch= (ImageView) findViewById(R.id.search_bt);
+
     }
 
     @Override
@@ -220,8 +225,13 @@ public class SearchContentActivity extends NormalBaseActivity {
         s.enqueue(new Callback<RootDataBean<SearchLessonCenter>>() {
             @Override
             public void onResponse(Call<RootDataBean<SearchLessonCenter>> call, Response<RootDataBean<SearchLessonCenter>> response) {
-                lists = response.body().data.getList();
-                initRecycler(lists);
+                if (response.body().status == 1) {
+                    KLog.json(GsonUtils.getInstance().toJson(response.body().data) );
+                    lists = response.body().data.getList();
+                    initRecycler(lists);
+                }else {
+                    ToastUtils.showShortToast(SearchContentActivity.this, response.body().message);
+                }
             }
 
             @Override
@@ -231,8 +241,14 @@ public class SearchContentActivity extends NormalBaseActivity {
         });
     }
 
+    ImageView img;
+    TextView title_text;//title
+    TextView renqi_text;
+    TextView keshi_text;
+    TextView price_text;
+
     private void initRecycler(List<SearchLesson> lists) {
-        adapter = new CommonAdapter<SearchLesson>(SearchContentActivity.this, R.layout. , lists){
+        adapter = new CommonAdapter<SearchLesson>(SearchContentActivity.this, R.layout.type_listview_item , lists){
 
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
@@ -241,13 +257,26 @@ public class SearchContentActivity extends NormalBaseActivity {
 
             @Override
             protected void convert(BaseViewHolder holder, SearchLesson searchLesson, int position) {
+                Log.d("TAG-Pos", "convert"+position);
+                img = holder.getView(R.id.img);
+                title_text = holder.getView(R.id.title_text);
+                renqi_text = holder.getView(R.id.renqi_text);
+                keshi_text = holder.getView(R.id.keshi_text);
+                price_text = holder.getView(R.id.price_text);
+
+                LoadImgUtils.loadBanner(mContext, searchLesson.getCourse_album(), img);
+                title_text.setText(searchLesson.getCourse_name());
+                renqi_text.setText(searchLesson.getNum_visit());
+                keshi_text.setText(searchLesson.getNum_hour());
+                price_text.setText(searchLesson.getPrice());
 
             }
         };
+
+        GridLayoutManager manager = new GridLayoutManager(SearchContentActivity.this, 1);
+        lRecyclerView.setLayoutManager(manager);
         mLRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
-        GridLayoutManager manager = new GridLayoutManager(getActivity(), 1);
-        recyclerview.setLayoutManager(manager);
-        recyclerview.setAdapter(mLRecyclerViewAdapter);
+        lRecyclerView.setAdapter(mLRecyclerViewAdapter);
     }
 
 

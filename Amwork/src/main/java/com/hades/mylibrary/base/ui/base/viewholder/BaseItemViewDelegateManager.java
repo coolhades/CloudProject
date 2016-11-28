@@ -83,6 +83,7 @@ public class BaseItemViewDelegateManager<T>
 
     public void convert(BaseViewHolder holder, T item, int position)
     {
+
         int delegatesCount = delegates.size();
         for (int i = 0; i < delegatesCount; i++)
         {

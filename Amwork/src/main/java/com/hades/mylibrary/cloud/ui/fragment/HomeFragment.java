@@ -21,9 +21,10 @@ import com.hades.mylibrary.base.projectutils.GsonUtils;
 import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.pojo.BaseBean;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
+import com.hades.mylibrary.base.utils.ToastUtils;
 import com.hades.mylibrary.cloud.adapter.HomeAdapter;
 import com.hades.mylibrary.cloud.constant.ApiCollection;
-import com.hades.mylibrary.cloud.ui.mvp.activity.SearchActivity;
+import com.hades.mylibrary.cloud.ui.activity.SearchActivity;
 
 import java.util.List;
 
@@ -70,13 +71,18 @@ public class HomeFragment extends Fragment {
         getdata.enqueue(new Callback<RootDataBean>() {
             @Override
             public void onResponse(Call<RootDataBean> call, Response<RootDataBean> response) {
-                List<BaseBean> list = GsonUtils.getInstance().fromJson(GsonUtils.getInstance().toJson(response.body().data) , new TypeToken<List<BaseBean>>(){}.getType());
-                KLog.json(GsonUtils.getInstance().toJson(list) );
+                if (response.body().status == 1) {
+                    List<BaseBean> list = GsonUtils.getInstance().fromJson(GsonUtils.getInstance().toJson(response.body().data), new TypeToken<List<BaseBean>>() {
+                    }.getType());
+                    KLog.json(GsonUtils.getInstance().toJson(list));
                     adapter = new HomeAdapter(list, getContext());
                     mLRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
                     GridLayoutManager manager = new GridLayoutManager(getActivity(), 1);
                     recyclerview.setLayoutManager(manager);
                     recyclerview.setAdapter(mLRecyclerViewAdapter);
+                }else {
+                    ToastUtils.showShortToast(getContext(), response.body().message);
+                }
             }
 
             @Override

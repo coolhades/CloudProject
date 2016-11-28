@@ -52,6 +52,7 @@ public class MediaUtil {
 		if (android.os.Environment.MEDIA_MOUNTED.equals(Environment
 				.getExternalStorageState())) {
 			File sdDir = Environment.getExternalStorageDirectory();// 获取跟目录
+			//按用户id区分
 			File dir = new File(sdDir + "/" + ConfigUtil.DOWNLOAD_DIR);
 			if (!dir.exists()) {
 				dir.mkdir();

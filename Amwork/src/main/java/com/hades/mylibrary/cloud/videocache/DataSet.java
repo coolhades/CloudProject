@@ -24,8 +24,8 @@ public class DataSet {
 	
 	private static SQLiteOpenHelper sqLiteOpenHelper;
 	
-	public static void init(Context context){
-		sqLiteOpenHelper = new SQLiteOpenHelper(context, "demo", null, 1) {
+	public static void init(Context context, String dbName){
+		sqLiteOpenHelper = new SQLiteOpenHelper(context, dbName, null, 1) {
 			@Override
 			public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			}

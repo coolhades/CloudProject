@@ -66,7 +66,7 @@ public class TeacherViewHolder extends RootViewHolder {
                 ImageView view = holder.getView(R.id.imge);
                 view.setImageResource(R.mipmap.ic_launcher);
                 TextView textView = holder.getView(R.id.lable);
-                textView.setText(mDatas.get(position).getTitle());
+                textView.setText(lesson.getTitle());
 
 
                 view.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +87,6 @@ public class TeacherViewHolder extends RootViewHolder {
         recyclerview = (RecyclerView) itemView.findViewById(R.id.recyclerview_holder);
 
         layoutParamsBean = new GridLayoutParamsBean();
-//        layoutParamsBean.setOra(GridLayoutManager.HORIZONTAL);
         layoutParamsBean.setSpancount(4);
         layoutParamsBean.setLeft(-1);
         layoutParamsBean.setTop(-1);

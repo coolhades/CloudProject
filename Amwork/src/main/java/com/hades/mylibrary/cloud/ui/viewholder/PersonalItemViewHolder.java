@@ -21,7 +21,7 @@ import java.util.List;
 * 描述   个人中心Recyclerview item
  *根据showcode跳转页面
 **/
-public class HolderPersonalItem extends RootViewHolder {
+public class PersonalItemViewHolder extends RootViewHolder {
 
     RecyclerView recyclerview;
     CommonAdapter adapter;
@@ -31,9 +31,14 @@ public class HolderPersonalItem extends RootViewHolder {
     GridLayoutManager.LayoutParams params;
     ResizeLayoutParams resizeLayoutParams = new ResizeLayoutParams();
 
-    public HolderPersonalItem(View itemView) {
+    public PersonalItemViewHolder(View itemView) {
         super(itemView);
         categoryList = new ArrayList<>();
+
+    }
+
+    @Override
+    public void setConfig(String config, Context context) {
 
     }
 

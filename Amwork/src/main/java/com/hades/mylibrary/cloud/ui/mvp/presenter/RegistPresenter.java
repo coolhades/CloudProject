@@ -4,6 +4,7 @@ package com.hades.mylibrary.cloud.ui.mvp.presenter;
 import android.content.Context;
 import android.content.Intent;
 
+import com.hades.mylibrary.base.data.ACache;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
@@ -19,7 +20,6 @@ import org.greenrobot.eventbus.EventBus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 
 /**
@@ -46,6 +46,7 @@ public class RegistPresenter extends BasePresenter<ILoadData, RegisterModel> {
             public void onResponse(Call<RootDataBean<User>> call, Response<RootDataBean<User>> response) {
                 if (response.body().status == 1) {
                     mView.onInitData(GsonUtils.getInstance().toJson(response.body().data));
+                    ACache.get(mContext).put("user", GsonUtils.getInstance().toJson(response.body().data) );
                     Intent i = new Intent();
                     i.setAction("ChooseConpanyActivity");
                     mContext.startActivity(i);

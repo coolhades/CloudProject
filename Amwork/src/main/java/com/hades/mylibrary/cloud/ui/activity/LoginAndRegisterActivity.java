@@ -1,6 +1,7 @@
 package com.hades.mylibrary.cloud.ui.activity;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +13,6 @@ import android.widget.TextView;
 
 import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.data.ACache;
-import com.hades.mylibrary.base.data.CacheController;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
 import com.hades.mylibrary.base.projectutils.SPUtils;
 import com.hades.mylibrary.cloud.bean.User;
@@ -40,28 +40,29 @@ public class LoginAndRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_and_register);
-        spUtils = new SPUtils(this, "login");
-        //查看是否存在登录信息 【包括平台信息】
-        if (spUtils.contains("user_id")){
-            User user = GsonUtils.getInstance().fromJson(ACache.get(this, "loginInfo")
-                    .getAsJSONObject("user").toString(), User.class);
-            if (null != user){
-                //缓存驱动
-                CacheController.getInstance().initCache(this, user.getUid());
 
-                //获取用户信息 登录并进入之前的平台
+        if (ACache.get(this).getAsString("user") != null){
+            //已登录
+            User user = GsonUtils.getInstance().fromJson(ACache.get(this).getAsString("user"), User.class);
+            if (user != null){
+                startActivity(new Intent(this, ChooseConpanyActivity.class));
+                this.finish();
             }
         }
 
 
-//        SaveUser save = new SaveUser(this);
-//        user = (save.getData("userFile", "user"));
-//        if (user != null) {
-//            if (!(user.getUid().equals("0"))) {
-////                startActivity(new Intent(this, MainActivity.class));
-////                this.finish();
+//        //查看是否存在登录信息 【包括平台信息】
+//        if (spUtils.contains("user_id")){
+//            User user = GsonUtils.getInstance().fromJson(ACache.get(this, "loginInfo")
+//                    .getAsJSONObject("user").toString(), User.class);
+//            if (null != user){
+//                //缓存驱动
+//                CacheController.getInstance().initCache(this, user.getUid());
+//
+//                //获取用户信息 登录并进入之前的平台
 //            }
 //        }
+
 
         initView();
         initData();
