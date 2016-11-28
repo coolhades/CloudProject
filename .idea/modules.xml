@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LibAm.iml" filepath="$PROJECT_DIR$/LibAm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libam/libam.iml" filepath="$PROJECT_DIR$/libam/libam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Amcore/Amcore.iml" filepath="$PROJECT_DIR$/Amcore/Amcore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Amwork/Amwork.iml" filepath="$PROJECT_DIR$/Amwork/Amwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarCloud.iml" filepath="$PROJECT_DIR$/CarCloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CustomApp/CustomApp.iml" filepath="$PROJECT_DIR$/CustomApp/CustomApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/downloaddemo/downloaddemo.iml" filepath="$PROJECT_DIR$/downloaddemo/downloaddemo.iml" />
     </modules>
   </component>
 </project>

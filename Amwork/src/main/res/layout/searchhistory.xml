@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_screen"
+            android:text="搜索历史"
+            android:textColor="@color/textColorHint"
+            android:textSize="@dimen/title_size" />
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_screen"
+            fancy:fb_defaultColor="@color/background"
+            fancy:fb_focusColor="@color/table_text_light"
+            fancy:fb_radius="@dimen/button_radius"
+            fancy:fb_text="@string/clear"
+            fancy:fb_textColor="@color/titletextcolor"></mehdi.sakout.fancybuttons.FancyButton>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

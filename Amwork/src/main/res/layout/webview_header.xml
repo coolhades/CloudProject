@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/diliver"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/home_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:orientation="horizontal" >
+
+
+        <ImageView
+            android:id="@+id/web_back"
+            android:layout_height="@dimen/bigbutton_size"
+            android:layout_width="@dimen/bigbutton_size"
+            android:padding="@dimen/padding_screen"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/back_img"/>
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:text=""
+            android:paddingLeft="22dp"
+            android:textSize="@dimen/title_size"
+            android:textColor="@color/titletextcolor"/>
+
+        <TextView
+            android:id="@+id/shared_text"
+            android:layout_height="@dimen/button_size"
+            android:layout_width="@dimen/button_size"
+            android:layout_marginRight="@dimen/padding_screen"
+            android:background="@mipmap/shared_img"
+            android:textColor="@color/titletextcolor"
+            android:textSize="@dimen/title_size"
+            android:layout_gravity="center_vertical"
+            android:visibility="invisible"
+            />
+
+        <ImageView
+            android:id="@+id/guide_iv"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@mipmap/guide_icon"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/padding_screen"
+            android:visibility="visible"
+            />
+    </LinearLayout>
+</LinearLayout>

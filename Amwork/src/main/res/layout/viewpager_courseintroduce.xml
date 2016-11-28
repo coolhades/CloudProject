@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="wrap_content"
+                android:padding="@dimen/padding_screen"
+                android:textSize="@dimen/larger_size"
+                android:textColor="@color/titletextcolor"
+                android:text=""
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_screen"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/teacher_and_date"
+                    android:layout_width="0dp"
+                    android:paddingLeft="@dimen/padding_screen"
+                    android:textSize="@dimen/small_size"
+                    android:textColor="@color/titletextcolor"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/keshi_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12课时"
+                    android:visibility="gone"
+                    android:textSize="@dimen/small_size"
+                    android:textColor="@color/titletextcolor"
+                    android:padding="@dimen/padding_screen"
+                    android:background="@drawable/kuang_bg" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/diliver"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_screen"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/renqi_text"
+                    android:layout_width="0dp"
+                    android:textSize="@dimen/small_size"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/titletextcolor"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/yuanjia_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥1200.00"
+                    android:textSize="@dimen/small_size"
+                    android:textColor="#B6B6B6"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:layout_gravity="bottom"
+                    android:paddingBottom="5dp"
+                    android:visibility="invisible"
+
+                    android:layout_marginRight="10dp"/>
+
+                <!-- android:background="@drawable/hengchuan_bg"-->
+
+                <TextView
+                    android:id="@+id/xianjia_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥1200.00"
+                    android:textSize="@dimen/title_size"
+                    android:textColor="@color/momeyColor"
+                    android:padding="@dimen/padding_screen"
+                    android:layout_gravity="bottom"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_screen"
+                android:background="@color/diliver"/>
+
+            <LinearLayout
+                android:id="@+id/choosecourse_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_screen"
+                android:paddingBottom="@dimen/padding_screen"
+                android:paddingLeft="@dimen/padding_screen"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/choosecourse_text"
+                    android:layout_width="0dp"
+                    android:textSize="@dimen/small_size"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/titletextcolor"
+                    android:layout_weight="1"
+                    android:text="@string/choose_class"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="@dimen/small_size"
+                    android:textColor="@color/pricecolor"
+                    android:paddingLeft="@dimen/padding_screen"
+                    android:paddingRight="@dimen/padding_screen"
+                    android:layout_gravity="bottom"
+                    android:paddingBottom="@dimen/padding_screen"
+                    android:layout_marginRight="@dimen/padding_screen"/>
+
+                <!-- android:background="@drawable/hengchuan_bg"-->
+
+                <ImageView
+                    android:id="@+id/open_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/right_img"
+                    android:paddingRight="@dimen/padding_screen"
+                    android:layout_gravity="bottom"
+                    android:paddingBottom="@dimen/padding_screen"
+                    android:layout_marginRight="@dimen/padding_screen"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_screen"
+                android:background="@color/diliver"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/btnbackground"
+                    android:layout_height="@dimen/vertical_line_height"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/course_introduce"
+                    android:textColor="@color/titletextcolor"
+                    android:textSize="@dimen/small_size"
+                    android:paddingLeft="@dimen/padding_screen"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/gaishu_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/titletextcolor"
+                android:textSize="@dimen/small_size"
+                android:paddingLeft="@dimen/padding_screen"
+                android:text=""
+                />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6"/>
+
+    <TextView
+        android:id="@+id/jion_lesson"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size"
+        android:layout_marginTop="@dimen/padding_screen"
+        android:layout_marginBottom="@dimen/padding_screen"
+        android:text="@string/join"
+        android:textSize="@dimen/morelarger_size"
+        android:textColor="@color/textcolor"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/login_bg"/>
+
+</LinearLayout>

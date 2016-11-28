@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/background"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edittext_search"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/padding_screen"
+            android:layout_marginLeft="@dimen/smallbutton_size"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:textColorHint="@color/textColorHint"
+            android:textColor="@color/titletextcolor"
+            android:imeOptions="actionSearch"
+            android:paddingLeft="@dimen/button_size"
+            android:singleLine="true"
+            android:textSize="@dimen/title_size"
+            android:hint="在所有课程中搜索"
+            android:background="@drawable/search_bg"/>
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/cancel_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_screen"
+            android:layout_gravity="center_vertical"
+            fancy:fb_defaultColor="@color/background"
+            fancy:fb_focusColor="@color/table_text_light"
+            fancy:fb_radius="@dimen/button_radius"
+            fancy:fb_text="@string/no"
+            fancy:fb_textColor="@color/titletextcolor">
+        </mehdi.sakout.fancybuttons.FancyButton>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/diliver"/>
+</LinearLayout>

@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">worklib</string>
+
+    <string name="android_auto_update_dialog_title">发现新版本</string>
+    <string name="android_auto_update_notify_ticker">发现新版本,点击进行升级</string>
+    <string name="android_auto_update_notify_content">发现新版本,点击进行升级</string>
+    <string name="android_auto_update_dialog_btn_download">立即下载</string>
+    <string name="android_auto_update_dialog_btn_cancel">以后再说</string>
+    <string name="android_auto_update_toast_no_new_update">已经是最新版本</string>
+    <string name="android_auto_update_download_progress">正在下载:%1$d%%</string>
+    <string name="android_auto_update_dialog_checking">正在检查版本</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weibo">WeiBo</string>
+
+    <string name="NOT_FOUND_ERROR">对应组件未注册</string>
+    <string name="NET_ERROR">网络连接错误</string>
+
+    <string name="course">课程</string>
+    <string name="home">首页</string>
+    <string name="mine">我的</string>
+    <string name="email_error">请检查邮箱格式是否有误</string>
+    <string name="pwd_error">两次密码输入不一致</string>
+    <string name="waite">请稍等</string>
+
+    <string name="join">参加该课程</string>
+    <string name="course_introduce">课程概述</string>
+    <string name="choose_class">请选择班级</string>
+
+    <string name="time">00:00</string>
+
+    <string name="no">取消</string>
+    <string name="ok">确定</string>
+
+    <string name="choosecampany_title">请选择平台</string>
+    <string name="notify_title">温馨提醒</string>
+    <string name="notify_choosecompany">不选择私有云平台将跳转公共学院，是否确认？</string>
+    <string name="companyname">平台名称</string>
+
+    <string name="teacher">老师</string>
+    <string name="company_time">创建时间</string>
+
+    <string name="empty">配置错误</string>
+    <string name="clear">清空</string>
+</resources>
