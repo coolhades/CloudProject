@@ -38,14 +38,14 @@ public class CourseFragment extends Fragment {
     TextView title;
 
     public CourseFragment() {
-        // Required empty public constructor
+        // Required item_errorsetting_ly public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_course, container, false);
+        View view = inflater.inflate(R.layout.fragment_course_ly, container, false);
         initView(view);
         initData();
         initEvent();
@@ -54,13 +54,13 @@ public class CourseFragment extends Fragment {
 
     private void initView(View view) {
 
-        back = (ImageButton) view.findViewById(R.id.back);
+        back = (ImageButton) view.findViewById(R.id.btn_back);
         magicIndicator = (MagicIndicator) view.findViewById(R.id.magic_indicator);
         viewpager = (ViewPager) view.findViewById(R.id.viewpager);
         title = (TextView) view.findViewById(R.id.head_title);
 
         back.setVisibility(View.INVISIBLE);
-        title.setText(R.string.course);
+        title.setText(R.string.TV_COURSE);
 
     }
 

@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.hades.mylibrary.R;
-import com.hades.mylibrary.base.projectutils.log.logtag.ToastTag;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.ToaUtils;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
@@ -24,7 +23,7 @@ public class StartupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_startup);
+        setContentView(R.layout.activity_startup_ly);
         
         SaveUser save=new SaveUser(this);
         ConstantSet.user=(save.getData("userFile","user"));
@@ -32,8 +31,8 @@ public class StartupActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
+                    Thread.sleep(2000);
                     getMain();
-                    Thread.sleep(3000);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -63,7 +62,7 @@ public class StartupActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RootDataBean<String>> call, Throwable t) {
-                ToaUtils.showTextToast(ToastTag.TAG_ERROR, StartupActivity.this);
+                ToaUtils.showTextToast(R.string.ERROR_UNIVERSAL_NET, StartupActivity.this);
             }
         });
     }

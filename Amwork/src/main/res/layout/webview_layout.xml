@@ -10,7 +10,7 @@
 	</include>
 
 
-		<include layout="@layout/line"></include>
+		<include layout="@layout/item_line_ly"></include>
 
 	    <WebView
 	        android:id="@+id/webview"

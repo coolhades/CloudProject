@@ -45,7 +45,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CatoryItem
 
     @Override
     public CatoryItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.course_item, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_recycler_course_content, parent, false);
         if (mILayoutParams != null)
             view.setLayoutParams(mILayoutParams.getLayoutParams());
         CatoryItemViewHolder holder = new CatoryItemViewHolder(view);

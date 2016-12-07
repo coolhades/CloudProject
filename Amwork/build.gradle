@@ -28,34 +28,27 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':Amcore')
-
     //权限申请库
     //图片加载库
-
-//    网络框架
+    //    网络框架
     //RxJava
     //RxDownloader
     //videoCache
-
     //流式布局 https://github.com/hongyangAndroid/FlowLayout
     // 底部tab栏
     //https://github.com/jdsjlzx/LRecyclerView
     //万能适配器 根据需求使用了该库的源码，增加了item的宽高处理
     //配合viewpager使用的indicator
-
     //list Dialog IOS效果
     // 特效Dialog
-
     //圆形图标 继承ImageView
     //fancyButton
-
-//  EventBus
+    //  EventBus
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.yanzhenjie:permission:1.0.3'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
-//    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-
+    //    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'zlc.season:rxdownload:1.2.0'
     compile 'com.danikula:videocache:2.6.3'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
@@ -72,6 +65,7 @@ dependencies {
     compile 'com.github.medyo:fancybuttons:1.8.2'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.github.zhaokaiqiang.klog:library:1.6.0'//log
     testCompile 'junit:junit:4.12'
     apt 'org.greenrobot:eventbus-annotation-processor:3.0.1'
 }

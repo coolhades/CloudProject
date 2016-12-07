@@ -48,12 +48,12 @@ public class TypeDialogListAdapter extends BaseAdapter {
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
 
-        view = View.inflate(mContext, R.layout.search_listview_item, null);
+        view = View.inflate(mContext, R.layout.item_search_content, null);
         TextView text = (TextView) view.findViewById(R.id.title_name);
         text.setText(lists.get(i).getTag_item_name());
         if(i==0)
         {
-            text.setBackgroundResource(R.drawable.login_bg);
+            text.setBackgroundResource(R.drawable.tv_dialog_bg);
             text.setTextColor(Color.parseColor("#FFFFFF"));
         }
         list.add(text);

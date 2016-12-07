@@ -31,7 +31,7 @@ public class TypeDialog extends BaseDialog{
 
     @Override
     protected int getLayoutId() {
-        return R.layout.type_dialog;
+        return R.layout.dialog_condition_ly;
     }
 
     @Override

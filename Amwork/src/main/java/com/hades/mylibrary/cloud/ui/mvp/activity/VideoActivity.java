@@ -38,12 +38,9 @@ import net.lucode.hackware.magicindicator.MagicIndicator;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static android.R.attr.path;
 
 
 /**
@@ -98,7 +95,7 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements ILoad
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acivity_class_video);
+        setContentView(R.layout.acivity_videoclass_ly);
         EventBus.getDefault().register(this);
         init(savedInstanceState);
 
@@ -113,8 +110,8 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements ILoad
     protected void initView(Bundle savedInstanceState) {
         videoViewpager = (ViewPager) findViewById(R.id.video_viewpager);
         magicIndicator = (MagicIndicator) findViewById(R.id.magic_indicator);
-        back = (ImageView) findViewById(R.id.back);
-        collectIv = (ImageView) findViewById(R.id.collect_iv);
+        back = (ImageView) findViewById(R.id.btn_back);
+        collectIv = (ImageView) findViewById(R.id.btn_collect);
         videoTitle = (TextView) findViewById(R.id.video_title);
         header = (LinearLayout) findViewById(R.id.header);
 
@@ -357,7 +354,7 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements ILoad
         player.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
-                start_bt.setImageResource(R.mipmap.stop_img);
+                start_bt.setImageResource(R.mipmap.btn_video_stopplay);
                 return false;
             }
         });
@@ -389,7 +386,7 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements ILoad
 
     //进入全屏
     private void enterFullScreen() {
-        expend_img.setImageResource(R.mipmap.expend_small_img);
+        expend_img.setImageResource(R.mipmap.btn_video_smallscreen);
         //显示返回按钮
         back_fullscreem.setVisibility(View.VISIBLE);
         isFullScreen = true;
@@ -413,7 +410,7 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements ILoad
         video_bar.setVisibility(View.VISIBLE);
         back_fullscreem.setVisibility(View.INVISIBLE);
         header.setVisibility(View.VISIBLE);
-        expend_img.setImageResource(R.mipmap.expend_big_img);
+        expend_img.setImageResource(R.mipmap.btn_video_fullscreen);
 
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(

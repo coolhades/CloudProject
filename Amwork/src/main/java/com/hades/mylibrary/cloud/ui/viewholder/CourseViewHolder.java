@@ -46,7 +46,12 @@ public class CourseViewHolder extends RootViewHolder {
 
     @Override
     public void setConfig(String config, Context context) {
-
+        layoutParamsBean = new GridLayoutParamsBean(context);
+        layoutParamsBean.setSpancount(2);
+        layoutParamsBean.setLeft(10);
+        layoutParamsBean.setTop(10);
+        layoutParamsBean.setRight(10);
+        layoutParamsBean.setButtom(10);
     }
 
     @Override
@@ -59,8 +64,8 @@ public class CourseViewHolder extends RootViewHolder {
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerview.setLayoutManager(manager);
         adapter = new CourseAdapter(context, data.get(0).getItem());
-//        new CommonAdapter<Lesson>(context, R.layout.course_item, data.get(0).getItem()
-        recyclerview.setAdapter(new CommonAdapter<Lesson>(context, R.layout.course_item, data.get(0).getItem()) {
+//        new CommonAdapter<Lesson>(context, R.layout.item_recycler_course_content, data.get(0).getItem()
+        recyclerview.setAdapter(new CommonAdapter<Lesson>(context, R.layout.item_recycler_course_content, data.get(0).getItem()) {
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
                 return resizeLayoutParams.initParams(context, data.get(0).getItem().size(), layoutParamsBean, ParamsType.ONLY_PIC);
@@ -85,12 +90,7 @@ public class CourseViewHolder extends RootViewHolder {
     @Override
     protected void initview(View view) {
         recyclerview = (RecyclerView) itemView.findViewById(R.id.recycler_holder);
-        layoutParamsBean = new GridLayoutParamsBean();
-        layoutParamsBean.setSpancount(2);
-        layoutParamsBean.setLeft(10);
-        layoutParamsBean.setTop(10);
-        layoutParamsBean.setRight(10);
-        layoutParamsBean.setButtom(10);
+
 
     }
 

@@ -44,7 +44,7 @@ public class ResigterFragment extends BaseFragment<RegistPresenter> implements I
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.register_fragment, null);
+        mView = inflater.inflate(R.layout.fragment_register_ly, null);
         init(mView, savedInstanceState);
         return mView;
 
@@ -190,7 +190,7 @@ public class ResigterFragment extends BaseFragment<RegistPresenter> implements I
             fetch_code.setClickable(false);
             fetch_code.setEnabled(false);
             if (isAdded()) {
-                fetch_code.setTextColor(getResources().getColor(R.color.textcolorhint));
+                fetch_code.setTextColor(getResources().getColor(R.color.tv_universal_hintcolor));
             }
             fetch_code.setText("再次获取" + millisUntilFinished / 1000+"s");
         }
@@ -201,7 +201,7 @@ public class ResigterFragment extends BaseFragment<RegistPresenter> implements I
             fetch_code.setText("获取验证码");
             fetch_code.setClickable(true);
             fetch_code.setEnabled(true);
-            fetch_code.setTextColor(getResources().getColor(R.color.textcolor));
+            fetch_code.setTextColor(getResources().getColor(R.color.tv_universal_content));
         }
     }
 

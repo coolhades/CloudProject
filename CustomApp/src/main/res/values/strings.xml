@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">CustomApp</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder ic_placeholder_video -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="weibo">WeiBo</string>
+
+
+
 
 
 </resources>

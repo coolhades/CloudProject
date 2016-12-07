@@ -36,7 +36,7 @@ public class CourseView {
     }
 
     public View getView() {
-        mView = View.inflate(mContext, R.layout.lrecyclerview, null);
+        mView = View.inflate(mContext, R.layout.lrecyclerview_ly, null);
         initView();
         initData();
         initEvent();
@@ -69,7 +69,7 @@ public class CourseView {
             JSONArray jsonarray = new JSONArray();//json数组，里面包含的内容为pet的所有对象
 
             JSONObject jsonObj = new JSONObject();//RootBean对象，json形式
-            jsonObj.put("blocktype", "banner");//向pet对象里面添加值
+            jsonObj.put("blocktype", "view_banner");//向pet对象里面添加值
 
             JSONArray child = new JSONArray();
             for (int i1 = 0; i1 < 3; i1++) {

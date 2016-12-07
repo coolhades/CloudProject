@@ -5,6 +5,6 @@
     tools:context="com.hades.mylibrary.cloud.ui.fragment.DownLoadingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <include layout="@layout/lrecyclerview"></include>
+    <include layout="@layout/lrecyclerview_ly"></include>
 
 </FrameLayout>

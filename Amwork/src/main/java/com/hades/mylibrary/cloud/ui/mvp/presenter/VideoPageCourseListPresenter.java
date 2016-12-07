@@ -1,7 +1,7 @@
 package com.hades.mylibrary.cloud.ui.mvp.presenter;
 
 import com.hades.mylibrary.base.ui.mvp.presenter.BasePresenter;
-import com.hades.mylibrary.cloud.ui.mvp.model.Test;
+import com.hades.mylibrary.cloud.ui.mvp.model.BaseModel;
 import com.hades.mylibrary.cloud.ui.mvp.view.ILoadData;
 
 import org.greenrobot.eventbus.EventBus;
@@ -14,7 +14,7 @@ import org.greenrobot.eventbus.Subscribe;
  *      点击列表播放相应视频
  *      自动播放下一段
 **/
-public class VideoPageCourseListPresenter extends BasePresenter<ILoadData, Test> {
+public class VideoPageCourseListPresenter extends BasePresenter<ILoadData, BaseModel> {
 
 
     @Subscribe()

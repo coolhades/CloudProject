@@ -26,7 +26,7 @@ public class TeacherDetailActivitiy extends BaseActivity<DetailPresenter> implem
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detail_layout);
+        setContentView(R.layout.activity_teacherdetail_ly);
     }
 
     @Override

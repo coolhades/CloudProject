@@ -8,18 +8,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hades.corelib.AmFactory;
 import com.hades.corelib.MAPTYPE;
 import com.hades.mylibrary.base.data.ACache;
+import com.hades.mylibrary.base.data.DbController;
+import com.hades.mylibrary.cloud.constant.ConstantSet;
 import com.hades.mylibrary.cloud.ui.fragment.CourseFragment;
+import com.hades.mylibrary.cloud.ui.fragment.DownLoadingFragment;
 import com.hades.mylibrary.cloud.ui.fragment.HomeFragment;
 import com.hades.mylibrary.cloud.ui.fragment.MyCenterFragment;
-import com.hades.mylibrary.cloud.videocache.DataSet;
 import com.hades.mylibrary.cloud.videocache.DownLoadInfoMap;
+import com.hades.mylibrary.cloud.videocache.VideoDbSet;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionYes;
 
@@ -43,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
         initData();
         initEvent();
 
-        //视频下载数据库 扩展平台数据 以平台域名为key
+        //扩展平台数据 以平台域名为key
         String tag = ACache.get(this).getAsString("user_tag").replace("/", "");
-        Log.d("TAG-TAG", tag);
-        DataSet.init(this, tag);
-        //加载该平台下 用户的视频下载信息
+        DbController.initDB(this, tag);
+        DbController.liteOrm.save(ConstantSet.user);//personal data saved
+        VideoDbSet.init();//init videoDb create "table" downlaodinfo
         DownLoadInfoMap.getInstance().initDownloaderHashMap();
 
     }
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     CourseFragment courseFragment;
     HomeFragment homeFragment;
     MyCenterFragment myCenterFragment;
+    DownLoadingFragment downLoadingFragment;
 
 
 
@@ -81,9 +84,10 @@ public class MainActivity extends AppCompatActivity {
 //                .setInActiveColor("#FDF5F5") //未选中图标及文字颜色
 //                .setBarBackgroundColor("#FFAC00")//选中图标及文字颜色
                 .setActiveColor("#FFAC00") // finxed模式下为选中图标颜色，
-                .addItem(new BottomNavigationItem(R.mipmap.home_img_normal, R.string.home))
-                .addItem(new BottomNavigationItem(R.mipmap.kecheng_img_normal, R.string.course))
-                .addItem(new BottomNavigationItem(R.mipmap.myself_img_normal, R.string.mine))
+                .addItem(new BottomNavigationItem(R.mipmap.img_tab_home_normal, R.string.TV_HOME))
+                .addItem(new BottomNavigationItem(R.mipmap.img_tab_kecheng, R.string.TV_COURSE))
+                .addItem(new BottomNavigationItem(R.mipmap.img_tab_personal_normal, R.string.TV_PERSONAL))
+                .addItem(new BottomNavigationItem(R.mipmap.img_tab_home, R.string.TV_PERSONAL))
                 .initialise();
     }
 
@@ -143,6 +147,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 f = myCenterFragment;
                 ft.replace(R.id.container, f);
+                break;
+            case 3:
+                if (null == downLoadingFragment){
+                    downLoadingFragment = new DownLoadingFragment();
+                }
+                f = downLoadingFragment;
+                ft.replace(R.id.container, f);
+                break;
 
         }
         ft.commitAllowingStateLoss();
@@ -165,6 +177,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        DataSet.saveData();
+        VideoDbSet.saveData();//退出app时保存数据
+        DbController.liteOrm.releaseReference();
+        ACache.get(this).put("user", "");
+        ACache.get(this).put("user_tag", "");
     }
 }

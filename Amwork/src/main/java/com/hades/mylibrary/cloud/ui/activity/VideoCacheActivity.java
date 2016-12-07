@@ -31,14 +31,14 @@ public class VideoCacheActivity extends NormalBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_cache);
+        setContentView(R.layout.activity_videocache_ly);
         init(savedInstanceState);
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         title = (TextView) findViewById(R.id.head_title);
-        back = (ImageButton) findViewById(R.id.back);
+        back = (ImageButton) findViewById(R.id.btn_back);
         indicator = (MagicIndicator) findViewById(R.id.magic_indicator);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         IndicatorManager.initMagicIndicator(this, indicator, viewPager, mDataList);

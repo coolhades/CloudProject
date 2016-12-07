@@ -17,8 +17,6 @@ import com.hades.mylibrary.cloud.constant.ConstantSet;
 import com.hades.mylibrary.cloud.ui.mvp.presenter.LoginPresenter;
 import com.hades.mylibrary.cloud.ui.mvp.view.ILoadData;
 
-import org.greenrobot.eventbus.EventBus;
-
 
 /**
  * Created by jiuzheyange on 2016/8/10.
@@ -44,7 +42,7 @@ public class LoginFragment extends BaseFragment<LoginPresenter> implements ILoad
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.login_fragmentt, null);
+        mView = inflater.inflate(R.layout.fragment_login_ly, null);
 
         init(mView, savedInstanceState);
 
@@ -101,7 +99,7 @@ public class LoginFragment extends BaseFragment<LoginPresenter> implements ILoad
             public void onClick(View view) {
 
                 if (!((inputEmail.getText().toString().length() > 0) && (inputPassword.getText().toString().length() > 0))) {
-                    ToaUtils.showTextToast(R.string.pwd_error, getContext());
+                    ToaUtils.showTextToast(R.string.ERROR_UNIVERSAL_PWD, getContext());
                 } else {
 
                     loginUser(inputEmail.getText().toString(), inputPassword.getText().toString());

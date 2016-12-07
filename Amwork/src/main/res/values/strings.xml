@@ -1,6 +1,61 @@
 <resources>
     <string name="app_name">worklib</string>
 
+
+    <!--//第三方账户信息 配置到App中-->
+    <!--极光推送-->
+    <string name="JpushKey">049a961b1ab94831befb30e2</string>
+    <!--cc视频-->
+    <string name="CC_ENCRYPT_ID">EB85B37C4546E6A4</string>
+    <string name="CC_ENCRYPT_KEY">SsJifp5ht0KJUzgiEGACUrpVNYLdaAkR</string>
+    <string name="CC_ID">1C1C1C9EEB01D75E</string>
+    <string name="CC_KEY">RRjzwvSvJbLRB3z81zrwAjPt9wLv29N8</string>
+    <!--友盟分享-->
+    <string name="UMeng_KEY">561cae6ae0f55abd990035bf</string>
+    <string name="UMeng_WeiXin_ID">wx967daebe835fbeac</string>
+    <string name="UMeng_WeiXin_KEY">5bb696d9ccd75a38c8a0bfe0675559b3</string>
+    <string name="UMeng_Sina_ID">3921700954</string>
+    <string name="UMeng_Sina_KEY">04b48b094faeb16683c32669824ebdad</string>
+    <string name="UMeng_QQ_ID">100424468</string>
+    <string name="UMeng_QQ_KEY">c7394704798a158208a74ab60104f0ba</string>
+
+
+    //app使用的string
+    <string name="ERROR_UNIVERSAL_NET">网络错误!</string>
+    <string name="ERROR_UNIVERSAL_PWD">密码错误!</string>
+    <string name="ERROR_UNIVERSAL_ACCOUNT">账户错误!</string>
+    <string name="ERROR_UNIVERSAL_SETTING">组件配置错误!</string>
+    <string name="NOTIFY_DIALOG_TITLE">温馨提醒</string>
+    <string name="NOTIFY_WAITING_MESSAGE">请稍等~</string>
+    <string name="NOTIFY_Empty_MESSAGE">请输入内容</string>
+    <string name="NOTIFY_CHOOSEPLATFORM_MESSAGE">不选择私有云平台将跳转公共学院，是否确认？</string>
+
+
+    <string name="OK">确定</string>
+    <string name="NO">取消</string>
+    <string name="CLEAR">清空</string>
+    <string name="TIME">00:00</string>
+
+    <string name="TV_COURSEINTERDOUCE_CONTENT">课程概述</string>
+    <string name="TV_COURSE">课程</string>
+    <string name="TV_HOME">首页</string>
+    <string name="TV_PERSONAL">我的</string>
+    <string name="TV_TEACHER">老师</string>
+    <string name="TV_PLATFORM">平台名称</string>
+    <string name="TV_PLATFORM_TITLE">请选择平台</string>
+
+    <string name="BTN_CHOOSECLASS">请选择班级</string>
+    <string name="BTN_JOIN">参加该课程</string>
+
+    <string name="EMPTY_LAYOUT_CONTENT">暂无数据</string>
+
+
+    //DEMO使用
+    <string name="no">取消</string>
+    <string name="ok">确定</string>
+    <string name="empty">配置错误</string>
+    <string name="company_time">创建时间</string>
+    <string name="title_activity_base_list">BaseListActivity</string>
     <string name="android_auto_update_dialog_title">发现新版本</string>
     <string name="android_auto_update_notify_ticker">发现新版本,点击进行升级</string>
     <string name="android_auto_update_notify_content">发现新版本,点击进行升级</string>
@@ -12,34 +67,4 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="weibo">WeiBo</string>
 
-    <string name="NOT_FOUND_ERROR">对应组件未注册</string>
-    <string name="NET_ERROR">网络连接错误</string>
-    <string name="Empty_Error">请输入内容</string>
-
-    <string name="course">课程</string>
-    <string name="home">首页</string>
-    <string name="mine">我的</string>
-    <string name="email_error">请检查邮箱格式是否有误</string>
-    <string name="pwd_error">两次密码输入不一致</string>
-    <string name="waite">请稍等</string>
-
-    <string name="join">参加该课程</string>
-    <string name="course_introduce">课程概述</string>
-    <string name="choose_class">请选择班级</string>
-
-    <string name="time">00:00</string>
-
-    <string name="no">取消</string>
-    <string name="ok">确定</string>
-
-    <string name="choosecampany_title">请选择平台</string>
-    <string name="notify_title">温馨提醒</string>
-    <string name="notify_choosecompany">不选择私有云平台将跳转公共学院，是否确认？</string>
-    <string name="companyname">平台名称</string>
-
-    <string name="teacher">老师</string>
-    <string name="company_time">创建时间</string>
-
-    <string name="empty">配置错误</string>
-    <string name="clear">清空</string>
 </resources>

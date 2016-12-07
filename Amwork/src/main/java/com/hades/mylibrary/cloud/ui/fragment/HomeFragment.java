@@ -1,8 +1,12 @@
 package com.hades.mylibrary.cloud.ui.fragment;
 
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
@@ -18,13 +22,15 @@ import com.google.gson.reflect.TypeToken;
 import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
-import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.pojo.BaseBean;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
 import com.hades.mylibrary.base.utils.ToastUtils;
 import com.hades.mylibrary.cloud.adapter.HomeAdapter;
 import com.hades.mylibrary.cloud.constant.ApiCollection;
 import com.hades.mylibrary.cloud.ui.activity.SearchActivity;
+import com.hades.mylibrary.cloud.videocache.VideoDownLoadManager;
+import com.hades.mylibrary.cloud.videocache.VideoDownLoadService;
+import com.socks.library.KLog;
 
 import java.util.List;
 
@@ -44,7 +50,7 @@ public class HomeFragment extends Fragment {
     LinearLayout search_layout;
 
     public HomeFragment() {
-        // Required empty public constructor
+        // Required item_errorsetting_ly public constructor
     }
 
 
@@ -52,7 +58,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstaneState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.homeview_fragment, container, false);
+        View v = inflater.inflate(R.layout.fragment_home_ly, container, false);
         initView(v);
         initData();
 
@@ -63,6 +69,7 @@ public class HomeFragment extends Fragment {
         recyclerview = (LRecyclerView) v.findViewById(R.id.recyclerview);
         recyclerview.setRefreshProgressStyle(ProgressStyle.BallClipRotate);
         search_layout = (LinearLayout) v.findViewById(R.id.search_layout);
+        bindServers();
     }
 
     private void initData() {
@@ -80,14 +87,14 @@ public class HomeFragment extends Fragment {
                     GridLayoutManager manager = new GridLayoutManager(getActivity(), 1);
                     recyclerview.setLayoutManager(manager);
                     recyclerview.setAdapter(mLRecyclerViewAdapter);
-                }else {
+                } else {
                     ToastUtils.showShortToast(getContext(), response.body().message);
                 }
             }
 
             @Override
             public void onFailure(Call<RootDataBean> call, Throwable t) {
-                Log.d("TAG-Home", "Error"+t.getMessage());
+                Log.d("TAG-Home", "Error" + t.getMessage());
             }
         });
 
@@ -95,9 +102,38 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), SearchActivity.class));
+                //开始下载
+                VideoDownLoadManager.getInstance().startDownLoad(getContext(), binder, "9A5717A2DDB39B909C33DC5901307461",
+                        "9A5717A2DDB39B909C33DC5901307461", "encrypt");
             }
         });
     }
 
+    //测试
+    private VideoDownLoadService.DownloadBinder binder;
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.i("service disconnected", name + "");
+        }
 
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            binder = (VideoDownLoadService.DownloadBinder) service;
+        }
+    };
+    private Intent service;
+
+    void bindServers() {
+        service = new Intent(getContext(), VideoDownLoadService.class);
+        getContext().bindService(service, serviceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (serviceConnection != null) {
+            getContext().unbindService(serviceConnection);
+        }
+    }
 }

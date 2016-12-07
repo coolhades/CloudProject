@@ -8,14 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bokecc.sdk.mobile.download.Downloader;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.ui.base.NormalBaseFragment;
 import com.hades.mylibrary.base.ui.base.adapter.CommonAdapter;
 import com.hades.mylibrary.base.ui.base.viewholder.BaseViewHolder;
-import com.hades.mylibrary.cloud.videocache.DataSet;
-import com.hades.mylibrary.cloud.videocache.DownloadInfo;
+import com.hades.mylibrary.cloud.dbmodel.DownLoadInfo;
+import com.hades.mylibrary.cloud.videocache.VideoDbSet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +27,12 @@ import java.util.List;
 public class DownLoadingFragment extends NormalBaseFragment {
 
     LRecyclerView lRecyclerView;
+    CommonAdapter adapter;
+    LRecyclerViewAdapter lRecyclerViewAdapter;
+    private List<DownLoadInfo> downloadingInfos;
+
     public DownLoadingFragment() {
-        // Required empty public constructor
+        // Required item_errorsetting_ly public constructor
     }
 
 
@@ -48,9 +55,16 @@ public class DownLoadingFragment extends NormalBaseFragment {
     @Override
     protected void initData() {
         //从数据库获取已下载完成视频信息
-        List<DownloadInfo> downloadInfos = DataSet.getDownloadInfos();
+       downloadingInfos = new ArrayList<>();
+        List<DownLoadInfo> downloadInfos = VideoDbSet.getDownloadInfos();//数据库取记录
+        for (DownLoadInfo downloadInfo : downloadInfos) {
+            if (downloadInfo.getStatus() == Downloader.FINISH) {
+                continue;
+            }
+            downloadingInfos.add(downloadInfo);
+        }
         //传入adapter显示 布局要更换
-        lRecyclerView.setAdapter(new CommonAdapter<DownloadInfo>(getContext(), R.layout.item_downloadvideo, downloadInfos) {
+        adapter = new CommonAdapter<DownLoadInfo>(getContext(), R.layout.item_downloadvideo, downloadInfos) {
 
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
@@ -58,10 +72,12 @@ public class DownLoadingFragment extends NormalBaseFragment {
             }
 
             @Override
-            protected void convert(BaseViewHolder holder, DownloadInfo downloadInfo, int position) {
+            protected void convert(BaseViewHolder holder, DownLoadInfo downloadInfo, int position) {
 
             }
-        });
+        };
+        lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+        lRecyclerView.setAdapter(lRecyclerViewAdapter);
     }
 
     @Override

@@ -1,16 +1,18 @@
 package cn.ezreal.AMPrivateProject;
 
 import android.app.Application;
-import android.content.Context;
 
-import com.danikula.videocache.HttpProxyCacheServer;
 import com.hades.corelib.AmFactory;
 import com.hades.mylibrary.base.factory.LayoutInflaterFactory;
 import com.hades.mylibrary.base.factory.TransactionFactory;
 import com.hades.mylibrary.base.net.HttpClientManager;
 import com.hades.mylibrary.base.net.RetrofitManager;
-import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.cloud.utils.CCdrmServerManager;
+import com.hades.mylibrary.cloud.utils.VolleyRequestManager;
+import com.socks.library.KLog;
+import com.umeng.socialize.Config;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -20,18 +22,6 @@ import cn.jpush.android.api.JPushInterface;
  */
 
 public class MyApplication extends Application {
-
-
-    private HttpProxyCacheServer proxy;
-
-    public static HttpProxyCacheServer getProxy(Context context) {
-        MyApplication app = (MyApplication) context.getApplicationContext();
-        return app.proxy == null ? (app.proxy = app.newProxy()) : app.proxy;
-    }
-
-    private HttpProxyCacheServer newProxy() {
-        return new HttpProxyCacheServer(this);
-    }
 
 
     @Override
@@ -45,20 +35,22 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         KLog.init(BuildConfig.LOG_DEBUG, "Hades");
+//        分享组件
+        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        Config.DEBUG = true;
+        UMShareAPI.get(this);
+
 
         HttpClientManager.getInstance().initClient(getApplicationContext());//初始化默认client
         //设置Retrofit
         RetrofitManager.getInstance().bindHttpClient(HttpClientManager.getInstance().getmOkHttpClient());
-
-//        HttpClientManager.getInstance().initClient(new OkHttpClient());//初始化自定义Client
-//        RootRequest.mBaseUrl = ""; //初始化基准域名  两步完成网络框架初始化 可以继承RootRequest进行API编写了
-//        RootDataBean<T> 封装了response格式 统一约定 status为int 返回data为Object对象，具体Javabean
-
+        VolleyRequestManager.getInstance().initReuestQueue(getApplicationContext());
         //cc 配置
         CCdrmServerManager.getInstance().initDrmServer();
-        CCdrmServerManager.getInstance().setCC_Account_id("EB85B37C4546E6A4", "SsJifp5ht0KJUzgiEGACUrpVNYLdaAkR");//加密
-        CCdrmServerManager.getInstance().setCC_Account_NO_id("1C1C1C9EEB01D75E", "RRjzwvSvJbLRB3z81zrwAjPt9wLv29N8");//非加密
-
+        CCdrmServerManager.getInstance().setCC_Account_id(getString(R.string.CC_ENCRYPT_ID), getString(R.string.CC_ENCRYPT_KEY));//加密
+        CCdrmServerManager.getInstance().setCC_Account_NO_id(getString(R.string.CC_ID), getString(R.string.CC_KEY));//非加密
 
         JPushInterface.init(this);
 
@@ -81,23 +73,27 @@ public class MyApplication extends Application {
                 .registView("mycenterfragment", "com.hades.mylibrary.cloud.ui.fragment.MyCenterFragment")
                 .registView("homefragment", "com.hades.mylibrary.cloud.ui.fragment.HomeFragment");
 
-
+        //xml
         LayoutInflaterFactory.getInstance()
-                .registLayoutId("AMHomeCategory", String.valueOf(R.layout.catory_viewholder))
-                .registLayoutId("AMRecommendCourse", String.valueOf(R.layout.course_viewholder))
-                .registLayoutId("AMRecommendTeacher", String.valueOf(R.layout.teacher_viewholder))
-                .registLayoutId("teacherlist", String.valueOf(R.layout.teacherlist_viewholder))
-                .registLayoutId("AMPrefectureList", String.valueOf(R.layout.prefecturelist_viewholder))
-                .registLayoutId("AMCourseCategory", String.valueOf(R.layout.type_listview_item))
-                .registLayoutId("AMBanner", String.valueOf(R.layout.banner_viewholder));
+                .registLayoutId("AMHomeCategory", String.valueOf(R.layout.recycler_catory_ly))
+                .registLayoutId("AMRecommendCourse", String.valueOf(R.layout.recycler_course_ly))
+                .registLayoutId("AMRecommendTeacher", String.valueOf(R.layout.recycler_teacher_ly))
+                .registLayoutId("teacherlist", String.valueOf(R.layout.recycler_teacherlist_ly))
+                .registLayoutId("AMPrefectureList", String.valueOf(R.layout.recycler_prefecturelist_ly))
+                .registLayoutId("AMCourseCategory", String.valueOf(R.layout.item_recycler_sortcontent_conten))
+                .registLayoutId("AMBanner", String.valueOf(R.layout.item_recycler_banner));
 
 
-//      原理是通过设置intent的action【 关联类名】来启动
+//      启动Activity等页面
+        //与服务端约定的 pushcode
         TransactionFactory.getInstance()
                 .registTransactionCode("choosecompany", "ChooseConpanyActivity")
                 .registTransactionCode("main", "MainActivity")
                 .registTransactionCode("coursedetail", "CourseDetailActivity")
-                .registTransactionCode("click", "CourseDetailActivity");
+                .registTransactionCode("click", "CourseDetailActivity")
+                //注册两个Activity 公共组件内使用了action启动app中的页面
+                .registTransactionCode("ChoosePlatForm", "cn.ezreal.AMPrivateProject.ChoosePlatForm")
+                .registTransactionCode("MainActivity", "cn.ezreal.AMPrivateProject.MainActivity");
 
 
     }

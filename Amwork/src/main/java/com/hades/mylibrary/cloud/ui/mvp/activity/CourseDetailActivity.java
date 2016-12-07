@@ -42,7 +42,7 @@ public class CourseDetailActivity extends BaseActivity<CourseDetailPresenter> im
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acivity_course_detail);
+        setContentView(R.layout.acivity_coursedetail_ly);
         init(savedInstanceState);//父类初始化
     }
 
@@ -56,8 +56,8 @@ public class CourseDetailActivity extends BaseActivity<CourseDetailPresenter> im
     protected void initView(Bundle savedInstanceState) {
         videoViewpager = (ViewPager) findViewById(R.id.video_viewpager);
         magicIndicator = (MagicIndicator) findViewById(R.id.magic_indicator);
-        back = (ImageView) findViewById(R.id.back);
-        collectIv = (ImageView) findViewById(R.id.collect_iv);
+        back = (ImageView) findViewById(R.id.btn_back);
+        collectIv = (ImageView) findViewById(R.id.btn_collect);
         videoTitle = (TextView) findViewById(R.id.video_title);
 
 

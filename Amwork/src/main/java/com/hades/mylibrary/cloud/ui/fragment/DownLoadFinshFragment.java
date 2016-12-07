@@ -1,6 +1,7 @@
 package com.hades.mylibrary.cloud.ui.fragment;
 
 
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,8 +15,9 @@ import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.ui.base.NormalBaseFragment;
 import com.hades.mylibrary.base.ui.base.adapter.CommonAdapter;
 import com.hades.mylibrary.base.ui.base.viewholder.BaseViewHolder;
-import com.hades.mylibrary.cloud.videocache.DataSet;
-import com.hades.mylibrary.cloud.videocache.DownloadInfo;
+import com.hades.mylibrary.cloud.dbmodel.DownLoadInfo;
+import com.hades.mylibrary.cloud.videocache.VideoDbSet;
+import com.hades.mylibrary.cloud.videocache.VideoDownLoadService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +28,12 @@ import java.util.List;
 public class DownLoadFinshFragment extends NormalBaseFragment {
 
     LRecyclerView lRecyclerView;
-    private List<DownloadInfo> downloadingInfos;
+    private List<DownLoadInfo> downloadingInfos;
+    private VideoDownLoadService.DownloadBinder binder;
+    private ServiceConnection serviceConnection;
 
     public DownLoadFinshFragment() {
-        // Required empty public constructor
+        // Required item_errorsetting_ly public constructor
     }
 
 
@@ -37,7 +41,7 @@ public class DownLoadFinshFragment extends NormalBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_down_load_finsh, container, false);
+        View view = inflater.inflate(R.layout.fragment_downloaded_ly, container, false);
         init(view, savedInstanceState);
         return view;
     }
@@ -53,16 +57,16 @@ public class DownLoadFinshFragment extends NormalBaseFragment {
     protected void initData() {
         //获取已下载完成视频信息
         downloadingInfos = new ArrayList<>();
-        List<DownloadInfo> downloadInfos = DataSet.getDownloadInfos();//数据库取记录
-        for (DownloadInfo downloadInfo : downloadInfos) {
+        List<DownLoadInfo> downloadInfos = VideoDbSet.getDownloadInfos();//数据库取记录
+        for (DownLoadInfo downloadInfo : downloadInfos) {
 
-            if (downloadInfo.getStatus() == Downloader.FINISH) {
-                continue;
+            if (downloadInfo.getStatus() != Downloader.FINISH) {
+                continue;//继续下次循环
             }
             downloadingInfos.add(downloadInfo);
         }
         //传入adapter显示
-        lRecyclerView.setAdapter(new CommonAdapter<DownloadInfo>(getContext(), R.layout.item_downloadvideo, downloadInfos) {
+        lRecyclerView.setAdapter(new CommonAdapter<DownLoadInfo>(getContext(), R.layout.item_downloadvideo, downloadInfos) {
 
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
@@ -70,7 +74,7 @@ public class DownLoadFinshFragment extends NormalBaseFragment {
             }
 
             @Override
-            protected void convert(BaseViewHolder holder, DownloadInfo downloadInfo, int position) {
+            protected void convert(BaseViewHolder holder, DownLoadInfo downloadInfo, int position) {
                 //绑定数据
             }
         });

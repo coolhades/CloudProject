@@ -15,7 +15,7 @@ public class LoadImgUtils {
         Glide.with(mContext)
                 .load(url)
                 .error(0)//load失敗的Drawable
-                .placeholder(R.mipmap.userheader)//loading時候的Drawable
+                .placeholder(R.mipmap.ic_placeholder_userheader)//loading時候的Drawable
                 .dontAnimate() //去掉淡入淡出
                 // .animate()//設置load完的動畫
 //                .centerCrop()//中心切圖, 會填滿

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:background="@color/ground_universal_white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:orientation="horizontal">
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/button"
+            fancy:fb_text = "@string/NO"
+            android:padding="@dimen/padding_screen"
+            android:layout_margin="@dimen/padding_screen"
+            fancy:fb_textColor = "@color/titletextcolor"
+            fancy:fb_defaultColor = "@color/ground_universal_white"
+            fancy:fb_focusColor = "@color/table_text_light"
+            fancy:fb_radius = "@dimen/button_radius"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+
+        </mehdi.sakout.fancybuttons.FancyButton>
+
+
+        <TextView
+            android:id="@+id/head_title"
+            android:layout_width="0dp"
+            android:textSize="@dimen/title_size"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/titletextcolor"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="@string/TV_PLATFORM_TITLE"/>
+
+        <View
+            android:layout_width="45dp"
+            android:layout_height="1dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/headerlinecolor"/>
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding_screen"
+    android:background="@color/ground_universal_white"
+    android:layout_marginBottom="@dimen/padding_screen"
+    android:id="@+id/recyclerview_item"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.hades.mylibrary.base.ui.customview.CircularImage
+            android:layout_margin="@dimen/padding_screen"
+            android:id="@+id/headimage"
+            android:layout_width="@dimen/circle_image"
+            android:layout_height="@dimen/circle_image" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/padding_screen"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/company_name"
+                android:text="@string/TV_PLATFORM"
+                android:textSize="@dimen/title_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_marginTop="@dimen/padding_screen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/img_universal_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="@dimen/padding_screen"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/course"
+            android:text="@string/TV_COURSE"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/teacher"
+            android:text="@string/TV_TEACHER"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/createtime"
+            android:text="@string/company_time"
+            android:layout_weight="1"
+            android:maxLength="10"
+            android:layout_width="0dp"
+            android:gravity="right"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -54,7 +54,7 @@ public class TeacherViewHolder extends RootViewHolder {
         recyclerview.setLayoutManager(manager);
 
         recyclerview.setAdapter(new CommonAdapter<Lesson>(context,
-                R.layout.catory_item, data.get(0).getItem()) {
+                R.layout.item_recycler_catorycontent, data.get(0).getItem()) {
             @Override
             protected GridLayoutManager.LayoutParams  setLayoutParams() {
                 return resizeLayoutParams.initParams(context, data.get(0).getItem().size(),
@@ -64,7 +64,7 @@ public class TeacherViewHolder extends RootViewHolder {
             @Override
             protected void convert(BaseViewHolder holder, Lesson lesson, int position) {
                 ImageView view = holder.getView(R.id.imge);
-                view.setImageResource(R.mipmap.ic_launcher);
+                view.setImageResource(R.mipmap.ic_universal_launcher);
                 TextView textView = holder.getView(R.id.lable);
                 textView.setText(lesson.getTitle());
 
@@ -86,16 +86,15 @@ public class TeacherViewHolder extends RootViewHolder {
     protected void initview(View view) {
         recyclerview = (RecyclerView) itemView.findViewById(R.id.recyclerview_holder);
 
-        layoutParamsBean = new GridLayoutParamsBean();
+    }
+
+    @Override
+    public void setConfig(String config, Context context) {
+        layoutParamsBean = new GridLayoutParamsBean(context);
         layoutParamsBean.setSpancount(4);
         layoutParamsBean.setLeft(-1);
         layoutParamsBean.setTop(-1);
         layoutParamsBean.setRight(-1);
         layoutParamsBean.setButtom(-1);
-    }
-
-    @Override
-    public void setConfig(String config, Context context) {
-
     }
 }

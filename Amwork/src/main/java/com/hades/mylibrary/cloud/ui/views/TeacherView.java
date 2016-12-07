@@ -36,7 +36,7 @@ public class TeacherView {
     }
 
     public View getView() {
-        mView = View.inflate(mContext, R.layout.lrecyclerview, null);
+        mView = View.inflate(mContext, R.layout.lrecyclerview_ly, null);
         initView();
 //        initData();
         initEvent();

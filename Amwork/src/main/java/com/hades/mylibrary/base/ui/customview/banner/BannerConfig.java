@@ -3,7 +3,7 @@ package com.hades.mylibrary.base.ui.customview.banner;
 
 public class BannerConfig {
     /**
-     * indicator style
+     * item_universal_indicator_ly style
      */
     public static final int NOT_INDICATOR=0;
     public static final int CIRCLE_INDICATOR=1;
@@ -12,14 +12,14 @@ public class BannerConfig {
     public static final int CIRCLE_INDICATOR_TITLE=4;
     public static final int CIRCLE_INDICATOR_TITLE_INSIDE=5;
     /**
-     * indicator gravity
+     * item_universal_indicator_ly gravity
      */
     public static final int LEFT=5;
     public static final int CENTER=6;
     public static final int RIGHT=7;
 
     /**
-     * banner
+     * view_banner
      */
     public static final int INDICATOR_SIZE=8;
     public static final int PADDING_SIZE=5;

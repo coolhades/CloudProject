@@ -10,8 +10,6 @@ import com.hades.mylibrary.R;
 import com.hades.mylibrary.cloud.adapter.HomeAdapter;
 import com.hades.mylibrary.cloud.bean.TestBean;
 
-import static com.hades.mylibrary.R.id.recyclerview;
-
 
 /**
  * Created by jiuzheyange on 2016/8/18.
@@ -30,17 +28,16 @@ public class PagerCourseList {
     }
 
     public View getView() {
-        mView = View.inflate(mContext, R.layout.lrecyclerview, null);
+        mView = View.inflate(mContext, R.layout.lrecyclerview_ly, null);
         initView();
         initData();
         initEvent();
-
 
         return mView;
     }
 
     private void initView() {
-        lRecyclerView = (LRecyclerView) mView.findViewById(recyclerview);
+        lRecyclerView = (LRecyclerView) mView.findViewById(R.id.recyclerview);
 
     }
 

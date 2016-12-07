@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.hades.mylibrary.base.data.ACache;
+import com.hades.mylibrary.base.factory.TransactionFactory;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
-import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
 import com.hades.mylibrary.base.ui.mvp.presenter.BasePresenter;
 import com.hades.mylibrary.base.utils.ToastUtils;
@@ -16,6 +16,7 @@ import com.hades.mylibrary.cloud.constant.ApiCollection;
 import com.hades.mylibrary.cloud.constant.ConstantSet;
 import com.hades.mylibrary.cloud.ui.mvp.model.LoginModel;
 import com.hades.mylibrary.cloud.ui.mvp.view.ILoadData;
+import com.socks.library.KLog;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -45,12 +46,14 @@ public class LoginPresenter extends BasePresenter<ILoadData, LoginModel> {
 //                用户信息保存本地 此处需要修改
                     KLog.json(GsonUtils.getInstance().toJson(response));
                     User user = response.body().data;
+//                    DbController.liteOrm.save(user);
+
                     ConstantSet.user = user;
                     KLog.json(GsonUtils.getInstance().toJson(ConstantSet.user));
 
                     ACache.get(mContext).put("user", GsonUtils.getInstance().toJson(user) );
                     Intent i = new Intent();
-                    i.setAction("ChooseConpanyActivity");
+                    i.setAction(TransactionFactory.getInstance().setTargetName("ChoosePlatForm"));
                     mContext.startActivity(i);
                     EventBus.getDefault().post(true);//关闭登录Activity
                 }else {

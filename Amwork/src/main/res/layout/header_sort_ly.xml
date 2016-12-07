@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/type_ly"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ground_universal_white"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/renqi_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="人气"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/renqi_img"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@mipmap/btn_sort_down" />
+
+
+    <TextView
+        android:id="@+id/shijian_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="时间"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/shijian_img"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@mipmap/btn_sort_down" />
+
+
+    <TextView
+        android:id="@+id/jiage_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="价格"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/jiage_img"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@mipmap/btn_sort_down" />
+
+</LinearLayout>

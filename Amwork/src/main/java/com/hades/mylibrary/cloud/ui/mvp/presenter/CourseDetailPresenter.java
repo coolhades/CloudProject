@@ -3,7 +3,7 @@ package com.hades.mylibrary.cloud.ui.mvp.presenter;
 
 import com.hades.mylibrary.base.ui.mvp.presenter.BasePresenter;
 import com.hades.mylibrary.cloud.ui.mvp.model.CallBackMToP;
-import com.hades.mylibrary.cloud.ui.mvp.model.Test;
+import com.hades.mylibrary.cloud.ui.mvp.model.BaseModel;
 import com.hades.mylibrary.cloud.ui.mvp.view.ICollectionStatus;
 import com.hades.mylibrary.cloud.ui.mvp.view.ILoadData;
 
@@ -13,10 +13,10 @@ import com.hades.mylibrary.cloud.ui.mvp.view.ILoadData;
 * 描述  View可以直接使用 model需要初始化
 **/
 
-public class CourseDetailPresenter extends BasePresenter<ILoadData, Test> {
+public class CourseDetailPresenter extends BasePresenter<ILoadData, BaseModel> {
 
     public CourseDetailPresenter() {
-       setmModel(new Test());
+       setmModel(new BaseModel());
     }
 
     @Override

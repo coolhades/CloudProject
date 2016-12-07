@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/empty_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无课程" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/image_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="@dimen/padding_screen"
+                android:textColor="@color/ground_universal_white"
+                android:textSize="@dimen/title_size"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/teacher_and_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:padding="@dimen/padding_screen"
+                android:textColor="@color/ground_universal_white"
+                android:textSize="@dimen/title_size"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--Tilte and teacher-->
+    <LinearLayout
+        android:id="@+id/content_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_screen">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="12课时"
+            android:textColor="@color/titletextcolor" />
+
+
+        <TextView
+            android:id="@+id/teachername_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_screen"
+            android:paddingRight="@dimen/padding_screen"
+            android:text=""
+            android:textColor="@color/tv_universal_color"
+            android:textSize="@dimen/title_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_screen">
+
+        <ImageView
+            android:layout_width="@dimen/smallbutton_size"
+            android:layout_height="@dimen/smallbutton_size"
+            android:src="@mipmap/img_prefecturedetail_moods" />
+
+        <TextView
+            android:id="@+id/renqi_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:paddingLeft="@dimen/padding_screen"
+            android:text="人气1122"
+            android:textColor="@color/titletextcolor" />
+
+        <TextView
+            android:id="@+id/keshi_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingLeft="@dimen/padding_screen"
+            android:text="12课时"
+            android:textColor="@color/titletextcolor" />
+
+        <TextView
+            android:id="@+id/price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="right"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:text="￥1000.00"
+            android:textColor="#FF4056"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#E6E6E6" />
+
+</LinearLayout>

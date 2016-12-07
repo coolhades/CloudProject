@@ -9,7 +9,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".cloud.ui.activity.VideoCacheActivity" />
         <activity android:name=".cloud.ui.activity.MyCollectionActivity" />
-        <activity android:name=".cloud.ui.activity.SearchContentActivity"></activity>
+        <activity android:name=".cloud.ui.activity.SearchContentActivity" />
+        <activity android:name=".cloud.ui.mvp.activity.UserCourseActivity" />
+        <activity
+            android:name=".base.ui.base.BaseListActivity"
+            android:label="@string/title_activity_base_list"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

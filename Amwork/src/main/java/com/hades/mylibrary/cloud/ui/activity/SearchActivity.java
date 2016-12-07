@@ -45,7 +45,7 @@ public class SearchActivity extends NormalBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search_ly);
         init(savedInstanceState);
     }
 
@@ -79,7 +79,7 @@ public class SearchActivity extends NormalBaseActivity {
     void initHistory(){
         //加载搜索历史
         historyRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        historyAdapter = new CommonAdapter<String>(this, R.layout.history_item, historyList) {
+        historyAdapter = new CommonAdapter<String>(this, R.layout.item_history_content, historyList) {
 
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
@@ -124,7 +124,7 @@ public class SearchActivity extends NormalBaseActivity {
                         || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     String key = editText.getText().toString().trim();
                    if (key.equalsIgnoreCase("")) {
-                       ToastUtils.showShortToast(SearchActivity.this, R.string.Empty_Error);
+                       ToastUtils.showShortToast(SearchActivity.this, R.string.NOTIFY_Empty_MESSAGE);
                         return false;
                     }
                     //保存搜索key，重复项不保存//取出持久化数据，进行比对

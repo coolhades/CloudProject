@@ -39,9 +39,9 @@ public class LoginAndRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_and_register);
+        setContentView(R.layout.activity_loginregister_ly);
 
-        if (ACache.get(this).getAsString("user") != null){
+        if (ACache.get(this).getAsString("user") != null && !ACache.get(this).getAsString("user").equalsIgnoreCase("")){
             //已登录
             User user = GsonUtils.getInstance().fromJson(ACache.get(this).getAsString("user"), User.class);
             if (user != null){
@@ -57,7 +57,7 @@ public class LoginAndRegisterActivity extends AppCompatActivity {
 //                    .getAsJSONObject("user").toString(), User.class);
 //            if (null != user){
 //                //缓存驱动
-//                CacheController.getInstance().initCache(this, user.getUid());
+//                DbController.getInstance().initCache(this, user.getUid());
 //
 //                //获取用户信息 登录并进入之前的平台
 //            }
@@ -83,7 +83,7 @@ public class LoginAndRegisterActivity extends AppCompatActivity {
         resigterFragment = new ResigterFragment();
 
         transaction.replace(R.id.fragment_layout, loginFragment).commit();
-        back = (ImageView) findViewById(R.id.back);
+        back = (ImageView) findViewById(R.id.btn_back);
 
     }
 
@@ -102,7 +102,7 @@ public class LoginAndRegisterActivity extends AppCompatActivity {
                 registerBt.setTextColor(Color.parseColor("#333333"));
                 loginBt.setTextColor(Color.parseColor("#FFFFFF"));
                 registerBt.setBackgroundColor(Color.parseColor("#00000000"));
-                loginBt.setBackgroundResource(R.drawable.login_bg);
+                loginBt.setBackgroundResource(R.drawable.tv_dialog_bg);
             }
         });
 
@@ -116,7 +116,7 @@ public class LoginAndRegisterActivity extends AppCompatActivity {
                 loginBt.setTextColor(Color.parseColor("#333333"));
                 registerBt.setTextColor(Color.parseColor("#FFFFFF"));
                 loginBt.setBackgroundColor(Color.parseColor("#00000000"));
-                registerBt.setBackgroundResource(R.drawable.login_bg);
+                registerBt.setBackgroundResource(R.drawable.tv_dialog_bg);
 
             }
         });

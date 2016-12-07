@@ -1,13 +1,15 @@
 package com.hades.mylibrary.base.ui.base.viewholder.layoututils;
 
+import android.content.Context;
+
 /**
 * 创建时间 2016/11/11
 * auther Hades
 * 描述   ora: 布局方式 暂时无用
  *      spanCount:控制列数【强制控制，在行数多、item数量不够情况下回留空】
  *      其它：padding【适用于只包含图片控件的情况，其余建议使用addItemDecoration，除非要求所有item都有padding】
+ * 对外提供设置dp值，内部保存转换为px值，便于params设置
 **/
-
 public class GridLayoutParamsBean {
     int ora;
     int spancount;
@@ -15,6 +17,11 @@ public class GridLayoutParamsBean {
     int top;
     int right;
     int buttom;
+
+    Context context;
+    public GridLayoutParamsBean(Context context) {
+        this.context = context;
+    }
 
     public int getOra() {
         return ora;

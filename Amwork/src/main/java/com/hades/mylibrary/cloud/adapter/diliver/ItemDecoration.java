@@ -32,7 +32,7 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
             GridLayoutManager.LayoutParams gridParams = (GridLayoutManager.LayoutParams) params;
             spanSize = gridParams.getSpanSize();
             index = gridParams.getSpanIndex();
-            //calculate real num in line
+            //calculate real num in item_line_ly
             if (index == 0 && mSpanCount > 1 && position == 0) {
                 int tempPosition = position;
                 int countInLine = 0;

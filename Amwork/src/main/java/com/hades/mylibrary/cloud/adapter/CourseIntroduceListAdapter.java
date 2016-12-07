@@ -51,7 +51,7 @@ public class CourseIntroduceListAdapter extends BaseExpandableListAdapter {
                              boolean  isLastChild, View convertView, ViewGroup parent)
     {
         String string = childLists.get(groupPosition).get(childPosition).getNode_caption();
-        View view= View.inflate(activity, R.layout.child_listview_item,null);
+        View view= View.inflate(activity, R.layout.item_expandlistview_content,null);
         
         TextView text= (TextView) view.findViewById(R.id.text);
         text.setText(string);
@@ -76,7 +76,7 @@ public class CourseIntroduceListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent)
     {
         String string = parentLists.get(groupPosition).getNode_caption();
-        View view= View.inflate(activity, R.layout.parent_listview_item,null);
+        View view= View.inflate(activity, R.layout.item_expandlistview_parent,null);
 
         TextView text= (TextView) view.findViewById(R.id.text);
         text.setText(string);
@@ -90,9 +90,9 @@ public class CourseIntroduceListAdapter extends BaseExpandableListAdapter {
                 ViewGroup.LayoutParams.FILL_PARENT, 64 );
         TextView text = new TextView(activity);
         text.setLayoutParams(layoutParams);
-        // Center the text vertically   
+        // Center the ic_placeholder_video vertically
         text.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-        // Set the text starting position   
+        // Set the ic_placeholder_video starting position
         text.setPadding(36 , 0 , 0 , 0 );
         text.setText(string);
         return  text;

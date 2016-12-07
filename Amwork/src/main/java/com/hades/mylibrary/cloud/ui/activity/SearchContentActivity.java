@@ -15,18 +15,17 @@ import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
 import com.hades.mylibrary.base.projectutils.LoadImgUtils;
-import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.NormalBaseActivity;
 import com.hades.mylibrary.base.ui.base.adapter.CommonAdapter;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
 import com.hades.mylibrary.base.ui.base.viewholder.BaseViewHolder;
 import com.hades.mylibrary.base.utils.ToastUtils;
-import com.hades.mylibrary.cloud.bean.SearchLesson;
-import com.hades.mylibrary.cloud.bean.SearchLessonCenter;
+import com.hades.mylibrary.cloud.bean.SearchContentBean;
 import com.hades.mylibrary.cloud.bean.TypeBean;
 import com.hades.mylibrary.cloud.constant.ApiCollection;
 import com.hades.mylibrary.cloud.constant.ConstantSet;
 import com.hades.mylibrary.cloud.ui.views.TypeDialog;
+import com.socks.library.KLog;
 
 import java.util.List;
 
@@ -39,7 +38,7 @@ import static com.hades.mylibrary.R.id.recyclerview;
 
 public class SearchContentActivity extends NormalBaseActivity {
 
-    List<SearchLesson> lists;
+    List<SearchContentBean.ListBean> lists;
     List<TypeBean> dialogList;
 
     TextView titleText;
@@ -67,7 +66,7 @@ public class SearchContentActivity extends NormalBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_type);
+        setContentView(R.layout.activity_searchcontent_ly);
         init(savedInstanceState);
     }
 
@@ -77,7 +76,7 @@ public class SearchContentActivity extends NormalBaseActivity {
 
         titleText = (TextView) findViewById(R.id.title_text);
         titleImg = (ImageView) findViewById(R.id.title_img);
-        backBt = (ImageView) findViewById(R.id.back);
+        backBt = (ImageView) findViewById(R.id.btn_back);
 
 
         renqiTextView= (TextView) findViewById(R.id.renqi_text);
@@ -132,13 +131,13 @@ public class SearchContentActivity extends NormalBaseActivity {
                 {
                     flag1=false;
                     order_sort="asc";
-                    renqiImg.setImageResource(R.mipmap.up_img);
+                    renqiImg.setImageResource(R.mipmap.btn_sort_up);
                 }
                 else
                 {
                     flag1=true;
                     order_sort="desc";
-                    renqiImg.setImageResource(R.mipmap.down_img);
+                    renqiImg.setImageResource(R.mipmap.btn_sort_down);
                 }
 
                 order_type="visit";
@@ -160,13 +159,13 @@ public class SearchContentActivity extends NormalBaseActivity {
                 {
                     flag2=false;
                     order_sort="asc";
-                    shijianImg.setImageResource(R.mipmap.up_img);
+                    shijianImg.setImageResource(R.mipmap.btn_sort_up);
                 }
                 else
                 {
                     flag2=true;
                     order_sort="desc";
-                    shijianImg.setImageResource(R.mipmap.down_img);
+                    shijianImg.setImageResource(R.mipmap.btn_sort_down);
                 }
 
                 order_type="time";
@@ -188,13 +187,13 @@ public class SearchContentActivity extends NormalBaseActivity {
                 {
                     flag3=false;
                     order_sort="asc";
-                    jiageImg.setImageResource(R.mipmap.up_img);
+                    jiageImg.setImageResource(R.mipmap.btn_sort_up);
                 }
                 else
                 {
                     flag3=true;
                     order_sort="desc";
-                    jiageImg.setImageResource(R.mipmap.down_img);
+                    jiageImg.setImageResource(R.mipmap.btn_sort_down);
                 }
 
                 order_type= "price";
@@ -219,12 +218,12 @@ public class SearchContentActivity extends NormalBaseActivity {
     }
 
     public void getData(final String keyword, final String page, final String order_type, final String order_sort, final String tag) {
-        Call<RootDataBean<SearchLessonCenter>> s = RetrofitManager.getInstance().getDefaultRetrofit()
+        Call<RootDataBean<SearchContentBean>> s = RetrofitManager.getInstance().getDefaultRetrofit()
                 .create(ApiCollection.searchCourse.class).getSearch(keyword, tag, page, "100", order_type, order_sort);
 
-        s.enqueue(new Callback<RootDataBean<SearchLessonCenter>>() {
+        s.enqueue(new Callback<RootDataBean<SearchContentBean>>() {
             @Override
-            public void onResponse(Call<RootDataBean<SearchLessonCenter>> call, Response<RootDataBean<SearchLessonCenter>> response) {
+            public void onResponse(Call<RootDataBean<SearchContentBean>> call, Response<RootDataBean<SearchContentBean>> response) {
                 if (response.body().status == 1) {
                     KLog.json(GsonUtils.getInstance().toJson(response.body().data) );
                     lists = response.body().data.getList();
@@ -235,7 +234,7 @@ public class SearchContentActivity extends NormalBaseActivity {
             }
 
             @Override
-            public void onFailure(Call<RootDataBean<SearchLessonCenter>> call, Throwable t) {
+            public void onFailure(Call<RootDataBean<SearchContentBean>> call, Throwable t) {
 
             }
         });
@@ -247,8 +246,8 @@ public class SearchContentActivity extends NormalBaseActivity {
     TextView keshi_text;
     TextView price_text;
 
-    private void initRecycler(List<SearchLesson> lists) {
-        adapter = new CommonAdapter<SearchLesson>(SearchContentActivity.this, R.layout.type_listview_item , lists){
+    private void initRecycler(List<SearchContentBean.ListBean> lists) {
+        adapter = new CommonAdapter<SearchContentBean.ListBean>(SearchContentActivity.this, R.layout.item_recycler_sortcontent_conten, lists){
 
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
@@ -256,7 +255,7 @@ public class SearchContentActivity extends NormalBaseActivity {
             }
 
             @Override
-            protected void convert(BaseViewHolder holder, SearchLesson searchLesson, int position) {
+            protected void convert(BaseViewHolder holder, SearchContentBean.ListBean searchLesson, int position) {
                 Log.d("TAG-Pos", "convert"+position);
                 img = holder.getView(R.id.img);
                 title_text = holder.getView(R.id.title_text);
@@ -266,10 +265,9 @@ public class SearchContentActivity extends NormalBaseActivity {
 
                 LoadImgUtils.loadBanner(mContext, searchLesson.getCourse_album(), img);
                 title_text.setText(searchLesson.getCourse_name());
-                renqi_text.setText(searchLesson.getNum_visit());
-                keshi_text.setText(searchLesson.getNum_hour());
+                renqi_text.setText(searchLesson.getNum_user());
+                keshi_text.setText(searchLesson.getNum_class());
                 price_text.setText(searchLesson.getPrice());
-
             }
         };
 

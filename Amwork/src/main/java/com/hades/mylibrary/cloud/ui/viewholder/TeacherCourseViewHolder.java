@@ -42,7 +42,12 @@ public class TeacherCourseViewHolder extends RootViewHolder {
 
     @Override
     public void setConfig(String rootBean, Context context) {
-        super.setConfig(rootBean, context);
+        layoutParamsBean = new GridLayoutParamsBean(context);
+        layoutParamsBean.setSpancount(2);
+        layoutParamsBean.setLeft(10);
+        layoutParamsBean.setTop(10);
+        layoutParamsBean.setRight(10);
+        layoutParamsBean.setButtom(10);
     }
 
     @Override
@@ -68,12 +73,7 @@ public class TeacherCourseViewHolder extends RootViewHolder {
     @Override
     protected void initview(View view) {
         recyclerview = (RecyclerView) itemView.findViewById(R.id.recycler_holder);
-        layoutParamsBean = new GridLayoutParamsBean();
-        layoutParamsBean.setSpancount(2);
-        layoutParamsBean.setLeft(10);
-        layoutParamsBean.setTop(10);
-        layoutParamsBean.setRight(10);
-        layoutParamsBean.setButtom(10);
+
 
     }
 }

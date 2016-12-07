@@ -28,7 +28,7 @@ public class ClipboardUtils {
      */
     public static void copyText(Context context, CharSequence text) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        clipboard.setPrimaryClip(ClipData.newPlainText("text", text));
+        clipboard.setPrimaryClip(ClipData.newPlainText("ic_placeholder_video", text));
     }
 
     /**

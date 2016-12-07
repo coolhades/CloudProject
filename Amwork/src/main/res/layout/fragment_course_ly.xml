@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/headerlinecolor"
+    tools:context="com.hades.mylibrary.cloud.ui.fragment.CourseFragment">
+
+    <include layout="@layout/header_universal_ly">
+
+    </include>
+
+
+    <include layout="@layout/item_universal_indicator_ly">
+
+    </include>
+
+    <include layout="@layout/viewspager_ly">
+
+    </include>
+
+
+
+</LinearLayout>

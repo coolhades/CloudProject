@@ -8,9 +8,9 @@ import java.util.Map;
 
 /**
  * Created by Hades on 2016/11/3.
- * 根据布局创建view
+ * 一个app一个实例，保存了启动目标的action
+ * 例如启动一个Activity 设置intent的action
  */
-
 public class TransactionFactory {
 
     Map<String, String> map;

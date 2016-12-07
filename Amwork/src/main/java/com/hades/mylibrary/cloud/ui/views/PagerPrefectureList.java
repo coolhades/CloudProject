@@ -32,7 +32,7 @@ public class PagerPrefectureList {
     }
 
     public View getView() {
-        mView = View.inflate(mContext, R.layout.lrecyclerview, null);//复用ListView
+        mView = View.inflate(mContext, R.layout.lrecyclerview_ly, null);//复用ListView
         initView();
 //        initData();
         initEvent();

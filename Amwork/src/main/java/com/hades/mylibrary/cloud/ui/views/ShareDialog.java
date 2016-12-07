@@ -54,7 +54,7 @@ public class ShareDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shared_layout);
+        setContentView(R.layout.dialog_shared_ly);
         //  setTitle(name);
         
         wxBt= (ImageView) findViewById(R.id.wx_bt);

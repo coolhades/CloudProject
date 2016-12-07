@@ -33,7 +33,7 @@ public class CourseListView extends HostRecyclerView {
     }
     @Override
     protected int getLayoutId() {
-        return R.layout.lrecyclerview;
+        return R.layout.lrecyclerview_ly;
     }
     @Override
     protected Context getContext() {

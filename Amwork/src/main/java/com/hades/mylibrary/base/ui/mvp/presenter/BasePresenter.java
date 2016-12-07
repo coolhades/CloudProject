@@ -2,7 +2,7 @@ package com.hades.mylibrary.base.ui.mvp.presenter;
 
 import android.util.Log;
 
-import com.hades.mylibrary.base.projectutils.log.logtag.DebugTAG;
+import com.hades.mylibrary.base.projectutils.DebugTAG;
 import com.hades.mylibrary.base.ui.mvp.interf.IRootModel;
 import com.hades.mylibrary.base.ui.mvp.interf.IRootView;
 
@@ -10,8 +10,8 @@ import com.hades.mylibrary.base.ui.mvp.interf.IRootView;
 /**
  * Created by Hades on 16/10/8.
  * Presenter基类
+ * 子类需要初始化model
  */
-
 public abstract class BasePresenter<T extends IRootView, M extends IRootModel> implements IRootPresenter<T> {
 
     protected static final String TAG = "BasePresenter";

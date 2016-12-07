@@ -11,7 +11,8 @@
             <option value="$PROJECT_DIR$/Amcore" />
             <option value="$PROJECT_DIR$/Amwork" />
             <option value="$PROJECT_DIR$/CustomApp" />
-            <option value="$PROJECT_DIR$/downloaddemo" />
+            <option value="$PROJECT_DIR$/bizsimpledemo" />
+            <option value="$PROJECT_DIR$/pravitedemo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

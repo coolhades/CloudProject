@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="ground_universal_white">#ffffff</color>
+    <color name="ground_universal_black">#000000</color>
+    <color name="diliver">#EDEDED</color>
+
+    <color name="tv_universal_color">#000000</color>
+    <color name="tv_universal_hintcolor">#969696</color>
+    <color name="tv_universal_content">#ffffff</color>
+    <color name="tv_orange">#FF3C00</color>
+
+    <color name="btn_background">#333333</color>
+
+    <color name="viewpageindictor">#00445566</color>
+    <color name="ground_conditiondialog">#99666666</color>//分类 Dialog 背景色
+
+    //其他
     <color name="table_text_light">#424242</color>
     <color name="table_text">#000000</color>
-
-
     <color name="childbackground">#cdcdcd</color>
-    <color name="background">#ffffff</color>
-    <color name="blackbackground">#000000</color>
-    <color name="diliver">#EDEDED</color>
     <color name="titletextcolor">#333333</color>
     <color name="headerlinecolor">#E6E6E6</color>
     <color name="pricecolor">#B6B6B6</color>
-    <color name="viewpageindictor">#00445566</color>
     <color name="bannerimage">#556675</color>
-    <color name="content">#ffffff</color>
-    <!--<color name="background">#DEDEDE</color>-->
-    <color name="textColor">#000000</color>
-    <color name="textColorHint">#969696</color>
-    <color name="momeyColor">#FF3C00</color>
-    <color name="textcolorhint">#CECFD3</color>
-    <color name="textcolor">#ffffff</color>
-    <color name="btnbackground">#333333</color>
 
-    <!-- detail_header -->
+    <color name="textcolor">#ffffff</color>
+    <!-- header_detailicon_ly -->
     <color name="detail_header_background">#686868</color>
     <!-- type_dialog-->
-    <color name="type_dialog_background">#99666666</color>
+
 </resources>

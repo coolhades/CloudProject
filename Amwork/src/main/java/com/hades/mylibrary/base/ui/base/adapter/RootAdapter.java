@@ -74,7 +74,7 @@ public abstract class RootAdapter extends RecyclerView.Adapter<RootViewHolder> {
         if (!AmFactory.getInstance().getHoldermap().containsKey(holdertypelist.get(viewType))
                 || (LayoutInflaterFactory.getInstance().inflaterView(holdertypelist.get(viewType), parent) )==null
                 ) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.empty, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_errorsetting_ly, parent, false);
             EmptyHolder holder = new EmptyHolder(view);
             return holder;
         }

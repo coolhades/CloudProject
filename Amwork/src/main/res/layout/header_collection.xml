@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:id="@+id/header"
-    android:background="@color/background"
+    android:background="@color/ground_universal_white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -12,12 +12,12 @@
         android:layout_height="50dp"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/back"
+            android:id="@+id/btn_back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="8dp"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/back_img"
+            android:src="@mipmap/btn_universal_back"
             android:contentDescription=""
             tools:ignore="ContentDescription" />
 
@@ -39,7 +39,7 @@
         <ImageView
             android:visibility="invisible"
             android:layout_width="35dp"
-            android:src="@mipmap/shared_img"
+            android:src="@mipmap/btn_universal_shared"
             android:layout_marginRight="15dp"
             android:layout_gravity="center_vertical"
             android:layout_height="35dp"
@@ -48,9 +48,9 @@
 
 
         <ImageView
-            android:id="@+id/collect_iv"
+            android:id="@+id/btn_collect"
             android:layout_width="35dp"
-            android:src="@mipmap/collect_normal"
+            android:src="@mipmap/btn_universal_collecting"
             android:layout_marginRight="15dp"
             android:layout_gravity="center_vertical"
             android:layout_height="35dp"

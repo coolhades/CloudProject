@@ -33,7 +33,7 @@ public class CatoryAdapter extends RecyclerView.Adapter<CatoryAdapter.CatoryItem
 
     @Override
     public CatoryItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CatoryItemViewHolder(layoutInflater.inflate(R.layout.catory_item, parent, false));
+        return new CatoryItemViewHolder(layoutInflater.inflate(R.layout.item_recycler_catorycontent, parent, false));
     }
 
     @Override

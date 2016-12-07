@@ -93,13 +93,13 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
                              boolean  isLastChild, View convertView, ViewGroup parent)
     {
         String string = childLists.get(groupPosition).get(childPosition).getNode_caption();
-        View view= View.inflate(mContext, R.layout.child_listview_item,null);
+        View view= View.inflate(mContext, R.layout.item_expandlistview_content,null);
 
         TextView text= (TextView) view.findViewById(R.id.text);
         text.setText(string);
 
         
-//        text.setOnClickListener(new View.OnClickListener() {
+//        ic_placeholder_video.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                getChildVideo(groupPosition,childPosition);
@@ -125,7 +125,7 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
     public View getGroupView(final int  groupPosition, boolean  isExpanded,
                              View convertView, ViewGroup parent) {
         String string = parentLists.get(groupPosition).getNode_caption();
-        View view = View.inflate(mContext, R.layout.parent_listview_item, null);
+        View view = View.inflate(mContext, R.layout.item_expandlistview_parent, null);
 
         TextView text = (TextView) view.findViewById(R.id.text);
         if (parentLists.size() > alltextview.size()){
@@ -142,7 +142,7 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
         //选中项设置颜色
         if (selectedPosition == groupPosition){
 //            expanditem_ly.setBackgroundColor(Color.parseColor("#000000"));
-//            text.setTextColor(Color.parseColor("#ffffff"));
+//            ic_placeholder_video.setTextColor(Color.parseColor("#ffffff"));
 //            view1.setBackgroundColor(Color.parseColor("#ffffff"));
         }
 

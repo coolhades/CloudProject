@@ -9,7 +9,6 @@ import com.google.gson.reflect.TypeToken;
 import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.projectutils.BannerImageLoader;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
-import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.viewholder.RootViewHolder;
 import com.hades.mylibrary.base.ui.customview.banner.Banner;
 import com.hades.mylibrary.base.ui.customview.banner.BannerConfig;
@@ -18,6 +17,7 @@ import com.hades.mylibrary.base.ui.customview.banner.listener.OnBannerClickListe
 import com.hades.mylibrary.cloud.bean.AMBanner;
 import com.hades.mylibrary.cloud.bean.BannerBean;
 import com.hades.mylibrary.cloud.ui.mvp.activity.CourseDetailActivity;
+import com.socks.library.KLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +73,7 @@ public class BannerViewHolder extends RootViewHolder {
         //设置banner动画效果
         banner.setBannerAnimation(Transformer.Accordion);
         //设置标题集合（当banner样式有显示title时）
-//        banner.setBannerTitles(Arrays.asList(titles));
+//        view_banner.setBannerTitles(Arrays.asList(titles));
 
 
         //设置指示器位置（当banner模式中有指示器时）
@@ -87,6 +87,8 @@ public class BannerViewHolder extends RootViewHolder {
             public void OnBannerClick(int position) {
                 Intent i = new Intent(context, CourseDetailActivity.class);
                 context.startActivity(i);
+
+
             }
         });
         banner.start();

@@ -36,7 +36,7 @@ public class VideoPageCourseListFragment extends BaseFragment<VideoPageCourseLis
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = LayoutInflater.from(getContext()).inflate(R.layout.video_list_fragment, container, false);
+        mView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_video_contentlist_ly, container, false);
         init(mView, savedInstanceState);
         return mView;
     }

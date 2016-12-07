@@ -7,7 +7,7 @@ import com.hades.mylibrary.cloud.bean.MyClass;
 import com.hades.mylibrary.cloud.bean.MyCollect;
 import com.hades.mylibrary.cloud.bean.MyExam;
 import com.hades.mylibrary.cloud.bean.MyOrder;
-import com.hades.mylibrary.cloud.bean.SearchLessonCenter;
+import com.hades.mylibrary.cloud.bean.SearchContentBean;
 import com.hades.mylibrary.cloud.bean.User;
 
 import java.util.List;
@@ -129,12 +129,18 @@ public class ApiCollection {
     public interface searchCourse {
         @FormUrlEncoded
         @POST("course/search")
-        Call<RootDataBean<SearchLessonCenter>> getSearch(@Field("keyword") String key,
-                                                         @Field("tag") String tag,
-                                                         @Field("page") String page,
-                                                         @Field("pagesize") String pagesize,
-                                                         @Field("order_type") String order_type,
-                                                         @Field("order_sort") String order_sort);
+        Call<RootDataBean<SearchContentBean>> getSearch(@Field("keyword") String key,
+                                                        @Field("tag") String tag,
+                                                        @Field("page") String page,
+                                                        @Field("pagesize") String pagesize,
+                                                        @Field("order_type") String order_type,
+                                                        @Field("order_sort") String order_sort);
+    }
+
+    public interface getList{
+        @FormUrlEncoded
+        @POST("main/getList")
+        Call<RootDataBean> getlist(@Field("user_id") String user_id);
     }
 
 }

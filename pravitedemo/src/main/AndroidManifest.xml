@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.am.pravite.demo">
+
+    <application
+        android:name=".DemoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_universal_launcher"
+        android:label="@string/app_name" android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+    </application>
+
+</manifest>

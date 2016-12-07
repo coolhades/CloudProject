@@ -18,7 +18,7 @@ public class VideoPresenter extends BasePresenter<ILoadData, VPlayModel> {
 
     @Override
     public void start() {
-        //start
+        //ic_startup_logo
     }
 
     /**

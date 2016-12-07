@@ -1,6 +1,6 @@
 package com.hades.mylibrary.base.net;
 
-import com.hades.mylibrary.base.projectutils.log.KLog;
+import com.socks.library.KLog;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

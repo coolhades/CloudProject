@@ -32,15 +32,15 @@ import static android.support.v4.view.ViewPager.OnPageChangeListener;
 import static android.support.v4.view.ViewPager.PageTransformer;
 
 public class Banner extends FrameLayout implements OnPageChangeListener {
-    public String tag = "banner";
+    public String tag = "view_banner";
     private int mIndicatorMargin = BannerConfig.PADDING_SIZE;
     private int mIndicatorWidth = BannerConfig.INDICATOR_SIZE;
     private int mIndicatorHeight = BannerConfig.INDICATOR_SIZE;
     private int bannerStyle = BannerConfig.CIRCLE_INDICATOR;
     private int delayTime = BannerConfig.TIME;
     private boolean isAutoPlay = BannerConfig.IS_AUTO_PLAY;
-    private int mIndicatorSelectedResId = R.drawable.gray_radius;
-    private int mIndicatorUnselectedResId = R.drawable.white_radius;
+    private int mIndicatorSelectedResId = R.drawable.ground_indicator_selected_bg;
+    private int mIndicatorUnselectedResId = R.drawable.ground_indicator_unselected;
     private int titleHeight;
     private int titleBackground;
     private int titleTextColor;
@@ -94,8 +94,8 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         mIndicatorWidth = typedArray.getDimensionPixelSize(R.styleable.Banner_indicator_width, BannerConfig.INDICATOR_SIZE);
         mIndicatorHeight = typedArray.getDimensionPixelSize(R.styleable.Banner_indicator_height, BannerConfig.INDICATOR_SIZE);
         mIndicatorMargin = typedArray.getDimensionPixelSize(R.styleable.Banner_indicator_margin, BannerConfig.PADDING_SIZE);
-        mIndicatorSelectedResId = typedArray.getResourceId(R.styleable.Banner_indicator_drawable_selected, R.drawable.gray_radius);
-        mIndicatorUnselectedResId = typedArray.getResourceId(R.styleable.Banner_indicator_drawable_unselected, R.drawable.white_radius);
+        mIndicatorSelectedResId = typedArray.getResourceId(R.styleable.Banner_indicator_drawable_selected, R.drawable.ground_indicator_selected_bg);
+        mIndicatorUnselectedResId = typedArray.getResourceId(R.styleable.Banner_indicator_drawable_unselected, R.drawable.ground_indicator_unselected);
         scaleType=typedArray.getInt(R.styleable.Banner_image_scale_type,0);
         delayTime = typedArray.getInt(R.styleable.Banner_delay_time, BannerConfig.TIME);
         isAutoPlay = typedArray.getBoolean(R.styleable.Banner_is_auto_play, BannerConfig.IS_AUTO_PLAY);
@@ -108,7 +108,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
 
     private void initView(Context context, AttributeSet attrs) {
         imageViews.clear();
-        View view = LayoutInflater.from(context).inflate(R.layout.banner, this, true);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_banner, this, true);
         viewPager = (BannerViewPager) view.findViewById(R.id.viewpager);
         titleView = (LinearLayout) view.findViewById(R.id.titleView);
         indicator = (LinearLayout) view.findViewById(R.id.indicator);
@@ -453,7 +453,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
                     viewPager.setCurrentItem(1, false);
                 }
                 break;
-            case 1://start Sliding
+            case 1://ic_startup_logo Sliding
                 if (currentItem == count + 1) {
                     viewPager.setCurrentItem(1, false);
                 }else if(currentItem == 0){

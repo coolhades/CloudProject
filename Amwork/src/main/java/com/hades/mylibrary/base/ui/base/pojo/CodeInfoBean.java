@@ -8,7 +8,7 @@ package com.hades.mylibrary.base.ui.base.pojo;
 **/
 public class CodeInfoBean {
     /**
-     * showCode : banner
+     * showCode : view_banner
      * pushCode : courseDetial
      * pushData :
      */

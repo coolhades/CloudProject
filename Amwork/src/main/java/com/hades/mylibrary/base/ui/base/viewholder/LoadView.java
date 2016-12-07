@@ -27,9 +27,9 @@ public class LoadView {
      *     BaseBean 封装了基本数据类型
     **/
     public void loadView(RootViewHolder holder, BaseBean bean, Context context) {
-        //传入json
+        holder.setConfig(GsonUtils.getInstance().toJson(bean.getBlockConfig()), context);
         //此处需要还原Json后重新解析，因为Gson是强映射，有类型擦除问题
         holder.setData(GsonUtils.getInstance().toJson(bean.getBlockData()), context);
-        holder.setConfig(GsonUtils.getInstance().toJson(bean.getBlockConfig()), context);
+
     }
 }

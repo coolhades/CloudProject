@@ -9,7 +9,7 @@
         android:id="@+id/home_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background"
+        android:background="@color/ground_universal_white"
         android:orientation="horizontal" >
 
 
@@ -19,7 +19,7 @@
             android:layout_width="@dimen/bigbutton_size"
             android:padding="@dimen/padding_screen"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/back_img"/>
+            android:src="@mipmap/btn_universal_back"/>
 
         <TextView
             android:id="@+id/title_text"
@@ -39,7 +39,7 @@
             android:layout_height="@dimen/button_size"
             android:layout_width="@dimen/button_size"
             android:layout_marginRight="@dimen/padding_screen"
-            android:background="@mipmap/shared_img"
+            android:background="@mipmap/btn_universal_shared"
             android:textColor="@color/titletextcolor"
             android:textSize="@dimen/title_size"
             android:layout_gravity="center_vertical"
@@ -50,7 +50,7 @@
             android:id="@+id/guide_iv"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:background="@mipmap/guide_icon"
+            android:background="@mipmap/btn_univsersal_guide"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="@dimen/padding_screen"
             android:visibility="visible"

@@ -14,16 +14,17 @@ import android.widget.TextView;
 
 import com.hades.mylibrary.R;
 import com.hades.mylibrary.base.data.ACache;
+import com.hades.mylibrary.base.factory.TransactionFactory;
 import com.hades.mylibrary.base.net.RetrofitManager;
 import com.hades.mylibrary.base.projectutils.GsonUtils;
 import com.hades.mylibrary.base.projectutils.LoadImgUtils;
-import com.hades.mylibrary.base.projectutils.log.KLog;
 import com.hades.mylibrary.base.ui.base.adapter.CommonAdapter;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
 import com.hades.mylibrary.base.ui.base.viewholder.BaseViewHolder;
 import com.hades.mylibrary.base.ui.customview.CircularImage;
 import com.hades.mylibrary.cloud.bean.CompanyListBean;
 import com.hades.mylibrary.cloud.constant.ApiCollection;
+import com.socks.library.KLog;
 
 import java.util.List;
 
@@ -42,27 +43,26 @@ public class ChooseConpanyActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_conpany);
+        setContentView(R.layout.activity_chooseplatform_ly);
 
         init();
     }
 
     private void init() {
-        if (null != ACache.get(this).getAsString("user_tag")){
+        if (null != ACache.get(this).getAsString("user_tag") && !ACache.get(this).getAsString("user_tag").equalsIgnoreCase("")){
             RetrofitManager.getInstance().setBaseUrl(ACache.get(this).getAsString("user_tag"));
             //跳转平台
             Intent i = new Intent();
-            i.setAction("MainActivity");
+            //app注册的action
+            i.setAction(TransactionFactory.getInstance().setTargetName("MainActivity"));
             ChooseConpanyActivity.this.startActivity(i);
             ChooseConpanyActivity.this.finish();
-
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.company_list);
         GridLayoutManager manager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(manager);
         button = (FancyButton) findViewById(R.id.button);
-
 
         initData();
         initEvent();
@@ -73,19 +73,19 @@ public class ChooseConpanyActivity extends Activity {
             @Override
             public void onClick(View view) {
                 //弹出弹窗
-                AlertDialog dialog = new AlertDialog.Builder(ChooseConpanyActivity.this).setTitle(R.string.notify_title)
-                        .setNegativeButton(R.string.no, null).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                AlertDialog dialog = new AlertDialog.Builder(ChooseConpanyActivity.this).setTitle(R.string.NOTIFY_DIALOG_TITLE)
+                        .setNegativeButton(R.string.NO, null).setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //跳转公共平台
                                 Intent i = new Intent();
-                                i.setAction("MainActivity");
+                                i.setAction(TransactionFactory.getInstance().setTargetName("MainActivity"));
                                 ChooseConpanyActivity.this.startActivity(i);
                                 ChooseConpanyActivity.this.finish();
                                 ACache.get(ChooseConpanyActivity.this).put("user_tag", RetrofitManager.getInstance().getmBaseUrl());
                             }
                         })
-                        .setMessage(R.string.notify_choosecompany).create();
+                        .setMessage(R.string.NOTIFY_CHOOSEPLATFORM_MESSAGE).create();
                 dialog.show();
             }
         });
@@ -112,7 +112,7 @@ public class ChooseConpanyActivity extends Activity {
     }
 
     private void initAdapter() {
-        recyclerView.setAdapter(new CommonAdapter<CompanyListBean>(this, R.layout.choosecompany_item, datalist) {
+        recyclerView.setAdapter(new CommonAdapter<CompanyListBean>(this, R.layout.item_recycler_chooseplatform_content, datalist) {
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
                 return null;
@@ -130,8 +130,8 @@ public class ChooseConpanyActivity extends Activity {
                 LoadImgUtils.loadUserHeader(mContext, companyListBean.getCompany_logo(), image);
                 title.setText(companyListBean.getCompany_name());
                 desc.setText(companyListBean.getCompany_desc());
-                course.setText(R.string.course + companyListBean.getCourse_count());
-                teacher.setText(R.string.teacher + companyListBean.getTeacher_count());
+                course.setText(R.string.TV_COURSE + companyListBean.getCourse_count());
+                teacher.setText(R.string.TV_TEACHER + companyListBean.getTeacher_count());
                 time.setText(companyListBean.getCreate_time());
 
 
@@ -145,7 +145,7 @@ public class ChooseConpanyActivity extends Activity {
                         ACache.get(ChooseConpanyActivity.this).put("user_tag", RetrofitManager.getInstance().getmBaseUrl());
 
                         Intent i = new Intent();
-                        i.setAction("MainActivity");
+                        i.setAction(TransactionFactory.getInstance().setTargetName("MainActivity"));
                         mContext.startActivity(i);
                         ChooseConpanyActivity.this.finish();
 

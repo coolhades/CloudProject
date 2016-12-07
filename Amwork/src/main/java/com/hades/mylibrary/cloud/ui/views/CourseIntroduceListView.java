@@ -38,7 +38,7 @@ public class CourseIntroduceListView extends HostRecyclerView {
     }
     @Override
     protected int getLayoutId() {
-        return R.layout.viewpager_courseintroducelist;
+        return R.layout.viewpager_courseintroducelist_ly;
     }
     @Override
     protected Context getContext() {

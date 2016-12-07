@@ -44,7 +44,12 @@ public class CatoryViewHolder extends RootViewHolder {
 
     @Override
     public void setConfig(String config, Context context) {
-
+        layoutParamsBean = new GridLayoutParamsBean(context);
+        layoutParamsBean.setSpancount(4);
+        layoutParamsBean.setLeft(1);
+        layoutParamsBean.setTop(1);
+        layoutParamsBean.setRight(1);
+        layoutParamsBean.setButtom(1);
     }
 
     @Override
@@ -57,7 +62,7 @@ public class CatoryViewHolder extends RootViewHolder {
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(manager);
         recyclerview.addItemDecoration(new SpaceItemDecoration(1, 4, 2));//水平情况有问题
-        adapter = new CommonAdapter<BannerBean>(context, R.layout.catory_item, categoryList) {
+        adapter = new CommonAdapter<BannerBean>(context, R.layout.item_recycler_catorycontent, categoryList) {
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
                 return resizeLayoutParams.initParams(context, categoryList.size(), layoutParamsBean, ParamsType.CONTAINS_OTHER);
@@ -74,13 +79,7 @@ public class CatoryViewHolder extends RootViewHolder {
     @Override
     protected void initview(View view) {
         recyclerview = (RecyclerView) itemView.findViewById(R.id.recyclerview_catory);
-        layoutParamsBean = new GridLayoutParamsBean();
-//        layoutParamsBean.setOra(GridLayoutManager.HORIZONTAL);
-        layoutParamsBean.setSpancount(4);
-        layoutParamsBean.setLeft(1);
-        layoutParamsBean.setTop(1);
-        layoutParamsBean.setRight(1);
-        layoutParamsBean.setButtom(1);
+
     }
 
 

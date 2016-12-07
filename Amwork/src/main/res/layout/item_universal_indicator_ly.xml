@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:gravity="center"
+        android:background="@color/ground_universal_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/magic_indicator"
+            android:layout_width="wrap_content"
+            android:paddingLeft="@dimen/padding_screen"
+            android:paddingRight="@dimen/padding_screen"
+            android:layout_height="@dimen/magic_indictor"
+            />
+
+    </LinearLayout>
+</LinearLayout>

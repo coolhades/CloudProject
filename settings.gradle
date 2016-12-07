@@ -1,1 +1,1 @@
-include ':CustomApp', ':Amcore', ':Amwork', ':downloaddemo'
+include ':CustomApp', ':Amcore', ':Amwork', ':bizsimpledemo', ':pravitedemo'

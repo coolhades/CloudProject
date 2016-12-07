@@ -13,7 +13,7 @@ import com.bokecc.sdk.mobile.download.DownloadListener;
 import com.bokecc.sdk.mobile.download.Downloader;
 import com.bokecc.sdk.mobile.exception.DreamwinException;
 import com.hades.mylibrary.R;
-import com.hades.mylibrary.cloud.utils.CCdrmServerManager;
+import com.hades.mylibrary.cloud.dbmodel.DownLoadInfo;
 
 import java.io.File;
 import java.util.Timer;
@@ -151,17 +151,23 @@ public class VideoDownLoadService extends Service {
         }
 
         //
-        downloader = DownLoadInfoMap.getInstance().downloaderHashMap.get(title);
-        if ( downloader == null){
-            file = MediaUtil.createFile(title, MediaUtil.PCM_FILE_SUFFIX);
-            if (file == null) {
-                Log.i(TAG, "File is null");
-                return android.app.Service.START_STICKY;
-            }
-            downloader = new Downloader(file, videoId, CCdrmServerManager.getInstance().getCC_Account_id(), CCdrmServerManager.getInstance().getCC_Account_Key());
-            DownLoadInfoMap.getInstance().downloaderHashMap.put(title, downloader);
+        if (!DownLoadInfoMap.getInstance().downloaderHashMap.containsKey(title)){
+
+            return android.app.Service.START_STICKY;
         }
 
+        downloader = DownLoadInfoMap.getInstance().downloaderHashMap.get(title);
+        if ( downloader == null){
+            //任务不存在
+//            file = MediaUtil.createFile(title, MediaUtil.PCM_FILE_SUFFIX);
+//            if (file == null) {
+//                Log.i(TAG, "File is null");
+//                return android.app.Service.START_STICKY;
+//            }
+//
+//            downloader = new Downloader(file, videoId, CCdrmServerManager.getInstance().getCC_Account_id(), CCdrmServerManager.getInstance().getCC_Account_Key());
+//            DownLoadInfoMap.getInstance().downloaderHashMap.put(title, downloader);
+        }
 
         downloader.setDownloadListener(downloadListener);
         downloader.start();
@@ -233,8 +239,8 @@ public class VideoDownLoadService extends Service {
                     sendBroadcast(new Intent(ConfigUtil.ACTION_DOWNLOADED));
                     // 通知下载中队列
                     sendBroadcast(intent);
-                    //移除完成的downloader
-                    DownLoadInfoMap.getInstance().downloaderHashMap.remove(title);
+                    //移除完成的downloader 此处通知正在下载页面更新信息
+//                    DownLoadInfoMap.getInstance().downloaderHashMap.remove(title);
                     Log.i(TAG, "download finished.");
                     break;
             }
@@ -294,12 +300,12 @@ public class VideoDownLoadService extends Service {
     @SuppressWarnings("deprecation")
     private void setUpNotification() {
         // 指定个性化视图
-        RemoteViews contentView = new RemoteViews(this.getPackageName(), R.layout.notification_layout);
+        RemoteViews contentView = new RemoteViews(this.getPackageName(), R.layout.notification_ly);
         contentView.setTextViewText(R.id.fileName, title);
 
         Notification.Builder builder = new Notification.Builder(getApplicationContext())
                 .setContentTitle("开始下载")
-                .setContent(contentView).setSmallIcon(R.mipmap.logo)
+                .setContent(contentView).setSmallIcon(R.mipmap.img_tab_home)
                 .setWhen(System.currentTimeMillis())// 设置时间发生时间
                 .setAutoCancel(true);// 设置可以清除;
 
@@ -334,7 +340,7 @@ public class VideoDownLoadService extends Service {
     }
 
     private void updateDownloadInfoByStatus(int status){
-        DownloadInfo downloadInfo = DataSet.getDownloadInfo(title);
+        DownLoadInfo downloadInfo = VideoDbSet.getDownloadInfo(title);
         if (downloadInfo == null) {
             return;
         }
@@ -348,6 +354,6 @@ public class VideoDownLoadService extends Service {
             downloadInfo.setProgressText(progressText);
         }
 
-        DataSet.updateDownloadInfo(downloadInfo);
+        VideoDbSet.updateDownloadInfo(downloadInfo);
     }
 }

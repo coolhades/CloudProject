@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.hades.mylibrary.base.projectutils.log.logtag.DebugTAG;
+import com.hades.mylibrary.base.projectutils.DebugTAG;
 import com.hades.mylibrary.base.ui.base.pojo.RootDataBean;
 
 import java.io.File;

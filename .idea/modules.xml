@@ -6,7 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/Amwork/Amwork.iml" filepath="$PROJECT_DIR$/Amwork/Amwork.iml" />
       <module fileurl="file://$PROJECT_DIR$/CarCloud.iml" filepath="$PROJECT_DIR$/CarCloud.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomApp/CustomApp.iml" filepath="$PROJECT_DIR$/CustomApp/CustomApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/downloaddemo/downloaddemo.iml" filepath="$PROJECT_DIR$/downloaddemo/downloaddemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bizsimpledemo/bizsimpledemo.iml" filepath="$PROJECT_DIR$/bizsimpledemo/bizsimpledemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pravitedemo/pravitedemo.iml" filepath="$PROJECT_DIR$/pravitedemo/pravitedemo.iml" />
     </modules>
   </component>
 </project>

@@ -51,7 +51,7 @@ public class PrefectureListViewHolder extends RootViewHolder {
         recyclerview.setLayoutManager(manager);
 
         recyclerview.setAdapter(new CommonAdapter<TeacherList.ItemBean>(context,
-                R.layout.teacherlist_item, data.get(0).getItem()) {
+                R.layout.item_teacherlist_content, data.get(0).getItem()) {
             @Override
             protected GridLayoutManager.LayoutParams setLayoutParams() {
                 GridLayoutManager.LayoutParams params = new GridLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
